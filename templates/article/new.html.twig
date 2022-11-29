@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Créer un Article
+{% endblock %}
+
+{% block heading %}Créer un Article
+{% endblock %}
+
+{% block main %}
+	<div class="container my-5">
+		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
+		{{ form_row(form.titre) }}
+		{{ form_row(form.categorie, {'attr': {'class': 'fst-italic'}}) }}
+		{{ form_row(form.imageFile) }}
+		<div class="my-2">
+			{{ form_errors(form.content) }}
+		</div>
+		{{ form_widget(form.content) }}
+		<div class="d-flex align-items-center my-3">
+			<button class="btn btn-success me-2">Enregistrer</button>
+			{{ form_end(form) }}
+			<a href="{{ path('app_article_index') }}" class="btn btn-outline-secondary">Retour à l'index</a>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{{asset('scripts/app.js')}}"></script>
+{% endblock %}

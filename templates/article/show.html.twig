@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	|
+	{{article.titre}}
+{% endblock %}
+
+{% block heading %}
+	{{article.titre}}
+{% endblock %}
+
+{% block main %}
+
+	<div class="container my-5">
+		{% if article.imageName %}
+			<img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('resize800') }}" alt="{{article.titre}}">
+		{% endif %}
+		{% if article.categorie %}
+			<p class="text-justify text-secondary fs-sm fw-bold my-4">
+				Catégorie :
+				{{ article.categorie.titre }}
+			</p>
+		{% endif %}
+		<p class="text-justify">{{ article.content|nl2br }}</p>
+		<p class="my-4 fst-italic fw-bold fs-sm">
+			Publié le
+			{{ article.createdAt|date('d/m/Y à H:i') }}
+			{{ article.modifiedAt ? '- Modifié le ' ~ article.modifiedAt|date('d/m/Y') : '' }}
+		</p>
+		<div class="d-flex my-4">
+			<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="me-2 btn btn-outline-success">Modifier</a>
+			{{ include('article/_delete_form.html.twig') }}
+			<a href="{{ path('app_article_index') }}" class="btn btn-outline-secondary ms-2">Retour à l'index</a>
+		</div>
+	</div>
+
+{% endblock %}

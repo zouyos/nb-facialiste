@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Ajouter une catégorie
+{% endblock %}
+
+{% block main %}
+	<div class="container my-5">
+		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
+		{{ form_widget(form) }}
+		<div class="d-flex align-items-center my-3">
+			<button class="btn btn-success me-2">Enregistrer</button>
+			{{ form_end(form) }}
+			<a href="{{ path('app_categorie_index') }}" class="btn btn-outline-secondary">Retour à l'index</a>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{{asset('scripts/app.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{{ form_row(form.titre) }}
+{{ form_row(form.imageFile) }}
+<div class="my-2">
+	{{ form_errors(form.content) }}
+</div>
+{{ form_widget(form.content) }}
+<button class="btn btn-success mt-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

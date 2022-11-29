@@ -1,0 +1,7 @@
+@mixin line($color, $height: 0.2rem, $width: 7rem) {
+  background-color: $color;
+  height: $height;
+  width: $width;
+  margin: auto;
+  border-radius: 90%;
+}

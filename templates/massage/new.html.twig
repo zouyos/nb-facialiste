@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Créer une Prestation
+{% endblock %}
+
+{% block heading %}Créer une Prestation
+{% endblock %}
+
+{% block main %}
+	<div class="container my-5">
+		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
+		{{ form_widget(form) }}
+		<div class="d-flex align-items-center">
+			<button class="btn btn-success me-2">Enregistrer</button>
+			{{ form_end(form) }}
+			<a href="{{ path('app_massage_index') }}" class="btn btn-outline-secondary">Retour à l'index</a>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{{asset('scripts/app.js')}}"></script>
+{% endblock %}

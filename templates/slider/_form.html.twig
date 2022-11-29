@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{{ form_row(form.ordre) }}
+{{ form_row(form.imageFile) }}
+{{ form_row(form.titre) }}
+<div class="form-check form-switch my-4">
+	{{ form_row(form.status) }}
+</div>
+<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

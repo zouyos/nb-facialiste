@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	| Profil
+{% endblock %}
+
+{% block heading %}
+	Profil
+{% endblock %}
+
+{% block main %}
+
+	{% include "inc/_flash.html.twig" %}
+
+	<div class="container p-5 border border-3 rounded col-md-4 my-4 mx-auto fs-5">
+		<p>Prénom :
+			{{app.user.prenom}}
+		</p>
+		<p>Nom :
+			{{app.user.nom}}
+		</p>
+		<p>Email :
+			{{app.user.email}}
+		</p>
+		<p>Date d'ínscription :
+			{{app.user.createdAt | date('d/m/Y')}}
+		</p>
+		<a href="{{path('app_profil_edit')}}" class="btn btn-secondary my-2">Modifier le profil</a>
+		<a href="{{path('app_logout')}}" class="btn btn-outline-danger my-2">Se déconnecter</a>
+	</div>
+
+{% endblock %}

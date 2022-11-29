@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Gestion des prestations
+{% endblock %}
+
+{% block heading %}Gestion des Prestations
+{% endblock %}
+
+{% block main %}
+
+	{% include "inc/_flash.html.twig" %}
+
+	<div class="container-fluid my-5 mx-auto">
+		<table class="table">
+			<thead>
+				<tr valign="middle">
+					<th>Titre</th>
+					<th>Photo</th>
+					<th>Description Courte</th>
+					<th>Description Longue</th>
+					<th>Durée</th>
+					<th>Prix</th>
+					<th>Date de création</th>
+					<th>Date de modification</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for massage in massages %}
+					<tr valign="middle">
+						<td>
+							{{ massage.legende ? massage.titre ~ ' - ' ~ massage.legende : massage.titre }}
+						</td>
+						{% if massage.photoName %}
+							<td><img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('thumb200') }}" alt="{{massage.titre}}" class="img200"></td>
+						{% else %}
+							<td class="fst-italic fs-sm">Aucune image pour cette prestation</td>
+						{% endif %}
+						<td class="text-center">{{ massage.descriptionCourte }}</td>
+						{% if massage.descriptionLongue %}
+							<td class="text-center">{{ massage.descriptionLongue|length > 50 ? massage.descriptionLongue|slice(0, 50) ~ '...' : massage.descriptionLongue }}</td>
+						{% else %}
+							<td class="fs-sm fst-italic">Cette prestation n'a pas de description longue</td>
+						{% endif %}
+						<td>{{ massage.duree|date('H:i') }}</td>
+						<td>{{ massage.prix }}€</td>
+						<td>{{ massage.createdAt ? massage.createdAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>{{ massage.modifiedAt ? massage.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>
+							<a href="{{ path('app_massage_edit', {'id': massage.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr valign="middle">
+						<td colspan="9" class="fst-italic">Aucune prestation trouvée.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{{ path('app_massage_new') }}" class="btn btn-outline-success">Ajouter une prestation</a>
+	</div>
+{% endblock %}

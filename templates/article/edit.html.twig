@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Modifier :
+	{{ article.titre }}
+{% endblock %}
+
+{% block heading %}Modifier :
+	{{ article.titre }}
+{% endblock %}
+
+{% block main %}
+	<div class="container my-5">
+		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
+		{{ form_row(form.titre) }}
+		{{ form_row(form.categorie, {'attr': {'class': 'fst-italic'}}) }}
+		{{ form_row(form.imageFile) }}
+		<div class="my-2">
+			{{ form_errors(form.content) }}
+		</div>
+		{{ form_widget(form.content) }}
+		<div class="my-3 d-flex align-items-center">
+			<button class="btn btn-success me-2">Mettre à jour</button>
+			{{ form_end(form) }}
+			{{ include('article/_delete_form.html.twig') }}
+			<a href="{{ path('app_article_index') }}" class="btn btn-outline-secondary ms-2">Retour à l'index</a>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{{asset('scripts/app.js')}}"></script>
+{% endblock %}

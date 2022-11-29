@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Modifier Image :
+	{{slider.titre}}
+{% endblock %}
+
+{% block heading %}Modifier Image :
+	{{slider.titre}}
+{% endblock %}
+
+{% block main %}
+	<div class="container my-5">
+		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
+		{{ form_row(form.ordre) }}
+		{{ form_row(form.imageFile) }}
+		{{ form_row(form.titre) }}
+		<div class="form-check form-switch my-4">
+			{{ form_row(form.status, {'label': 'Activer/Désactiver'}) }}
+		</div>
+		<div class="d-flex align-items-center my-3">
+			<button class="btn btn-success me-2">Enregistrer</button>
+			{{ form_end(form) }}
+			{{ include('slider/_delete_form.html.twig') }}
+			<a href="{{ path('app_slider_index') }}" class="btn btn-outline-secondary ms-2">Retour à l'index</a>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{{asset('scripts/app.js')}}"></script>
+{% endblock %}

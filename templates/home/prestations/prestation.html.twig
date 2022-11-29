@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block titile %}
+	{{ parent() }}
+	|
+	{{massage.titre}}
+{% endblock %}
+
+{% block heading %}
+	{{massage.titre}}
+{% endblock %}
+
+{% block main %}
+
+	<div class="container-fluid mx-auto m-5">
+		<div class="border border-3 rounded-5 py-5 m-5 row justify-content-around align-items-center">
+			<div class="col-5">
+				{% if massage.photoName %}
+					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize800') }}" alt="Massage: {{massage.titre}}" class="img-fluid w-100 rounded-5">
+				{% else %}
+					<img src="{{asset('img/default.jpg')}}" alt="Massage" class="img-fluid w-100 rounded-5">
+				{% endif %}
+			</div>
+			<div class="col-5">
+				<h2>{{ massage.titre }}
+					<span class="fst-italic">{{ massage.legende ? ' ~ ' ~ massage.legende : ''}}</span>
+				</h2>
+				<p class="fs-5 text-justify">
+					{{massage.descriptionLongue|nl2br}}
+				</p>
+				<p class="my-4 fs-5 text-secondary">Durée
+					{% if massage.duree|date('H') < 1 %}
+						{{ massage.duree|date('i') }}mn
+					{% else %}
+						{{ massage.duree|date('H') ~ 'h' ~ massage.duree|date('i') }}
+					{% endif %}
+				</p>
+			</div>
+		</div>
+		<div class="mx-4">
+			<a href="{{path('app_prestations')}}" class="btn btn-outline-secondary mx-5 my-1">Tous les massages</a>
+		</div>
+	</div>
+{% endblock %}

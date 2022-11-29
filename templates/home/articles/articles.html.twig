@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| News & Articles
+{% endblock %}
+
+{% block heading %}News & Articles
+{% endblock %}
+
+{% block main %}
+
+	<div id="news" class="container my-5">
+
+		<table class="table">
+			{% for article in articles %}
+				<tr valign="middle" onclick="window.location='{{path('app_article', {'id':article.id})}}';">
+					<td>{{ article.createdAt|date('d/m/Y') }}</td>
+					{% if article.categorie %}
+						<td class="fs-sm fw-bold fst-italic">
+							[{{article.categorie.titre}}]
+						</td>
+					{% else %}
+						<td></td>
+					{% endif %}
+					<td class="col-3 fs-5 fw-bold text-center text-underline">
+						{{ article.titre }}
+					</td>
+					{% if article.imageName %}
+						<td>
+							<img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('thumb200') }}" alt="{{article.titre}}" class="rounded-3">
+						</td>
+					{% else %}
+						<td></td>
+					{% endif %}
+					<td>
+						{{ article.content|length > 150 ? article.content|slice(0, 150) ~ '...' : article.content }}
+					</td>
+				</tr>
+			{% else %}
+				<tr colspan="5" class="fst-tialic">Aucun article pour le moment.</tr>
+			{% endfor %}
+		</table>
+
+		<div class="my-4">
+			<a href="{{ path('app_home') }}" class="btn btn-outline-secondary">Retour à l'accueil</a>
+		</div>
+	</div>
+{% endblock %}

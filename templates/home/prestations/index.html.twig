@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{parent()}}
+	| Toutes les prestations
+{% endblock %}
+
+{% block heading %}
+	Massages
+{% endblock %}
+
+{% block main %}
+
+	<div class="container-fluid mx-auto my-5 flex flex-wrap">
+		{% for massage in massages %}
+			<div class="card mx-5 my-3 rounded-5" style="width: 36rem;">
+				{% if massage.photoName %}
+					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize600') }}" class="card-img-top w-100 rounded-5" alt="massage">
+				{% else %}
+					<img src="{{ asset('img/default.jpg') }}" class="card-img-top rounded-5" alt="massage">
+				{% endif %}
+				<div class="card-body">
+					<h3 class="card-title text-center my-2">{{ massage.titre }}</h3>
+					<p class="fs-md fst-italic text-center my-2">{{ massage.legende }}</p>
+					<div class="row mt-4 mb-2">
+						<p class="card-text col-9 fs-5">
+							{{ massage.descriptionCourte }}
+						</p>
+						<p class="h6 card-text text-secondary col-3">
+							Durée
+							{% if massage.duree|date('H') < 1 %}
+								{{ massage.duree|date('i') }}mn
+							{% else %}
+								{{ massage.duree|date('H') ~ 'h' ~ massage.duree|date('i') }}
+							{% endif %}
+						</p>
+					</div>
+					<a href="{{path('app_prestation', {'id':massage.id})}}" class="btn btn-success mb-2">En savoir plus</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

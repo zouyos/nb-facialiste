@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	{{article.titre}}
+{% endblock %}
+
+{% block heading %}
+	{{article.titre}}
+{% endblock %}
+
+{% block main %}
+
+	<div class="container my-5">
+		{% if article.imageName %}
+			<p class="text-center mt-5"><img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('resize800') }}" alt="{{article.titre}}" class="rounded-3"></p>
+		{% endif %}
+		<p class="text-justify my-3">{{ article.content|nl2br }}</p>
+		<p class="fs-sm fst-italic">
+			Article publié le
+			{{ article.createdAt|date('d/m/Y') }}
+		</p>
+		<a href="{{ path('app_articles') }}" class="btn btn-outline-secondary my-3">Tous les articles</a>
+	</div>
+
+{% endblock %}

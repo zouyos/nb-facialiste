@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Gestion des Catégories
+{% endblock %}
+
+{% block heading %}
+	Gestion des Catégories
+{% endblock %}
+
+{% block main %}
+
+	{% include "inc/_flash.html.twig" %}
+
+	<div class="container my-5 mx-auto">
+		<table class="table">
+			<thead>
+				<tr valign="middle">
+					<th>Titre</th>
+					<th>Date de création</th>
+					<th>Date de modifictation</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for categorie in categories %}
+					<tr valign="middle">
+						<td>{{ categorie.titre }}</td>
+						<td>{{ categorie.createdAt ? categorie.createdAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>{{ categorie.modifiedAt ? categorie.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>
+							<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr valign="middle">
+						<td colspan="4" class="fst-italic">Aucune catégorie trouvée.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_categorie_new') }}" class="btn btn-outline-success">Ajouter une catégorie</a>
+	</div>
+{% endblock %}

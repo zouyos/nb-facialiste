@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	| Interface Admin
+{% endblock %}
+{% block heading %}Interface Admin
+{% endblock %}
+
+{% block main %}
+	<div class="container d-flex flex-wrap my-4 justify-content-center">
+		<div class="card m-3" style="width: 18rem;">
+			<img src="{{ asset('image/default.jpg') }}" class="card-img-top w-100" alt="...">
+			<div class="card-body">
+				<h3 class="card-title">Massages</h5>
+				<a href="{{ path('vehicule') }}" class="btn btn-outine-success">Afficher</a>
+				<a href="{{ path('vehicule') }}" class="btn btn-outine-secondary">Gerer les catégories</a>
+			</div>
+		</div>
+
+		<div class="card m-3 " style="width: 18rem;">
+			<img src="{{ asset('image/user.jpg') }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h3 class="card-title">Utilisateurs</h5>
+				<a href="{{ path('app_user_index') }}" class="btn btn-outine-success">Afficher</a>
+			</div>
+		</div>
+
+		<div class="card m-3" style="width: 18rem;">
+			<img src="{{ asset('image/commande.jpg') }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h3 class="card-title">Commandes</h5>
+				<a href="{{ path('app_commande_index') }}" class="btn btn-outine-success">Afficher</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

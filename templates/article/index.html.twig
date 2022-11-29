@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Gestion des articles
+{% endblock %}
+
+{% block heading %}Gestion des Articles
+{% endblock %}
+
+{% block main %}
+
+	{% include "inc/_flash.html.twig" %}
+
+	<div class="container-fluid my-5 mx-auto">
+
+		<table class="table">
+			<thead>
+				<tr valign="middle">
+					<th>Titre</th>
+					<th>Catégorie</th>
+					<th>Image</th>
+					<th>Aperçu du contenu</th>
+					<th>Date de création</th>
+					<th>Date de modification</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for article in articles %}
+					<tr valign="middle">
+						<td>
+							{{ article.titre }}
+						</td>
+						{% if article.categorie %}
+							<td class="fs-sm fw-bold">[{{article.categorie.titre}}]</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+						{% if article.imageName %}
+							<td><img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('thumb200') }}" alt="{{article.titre}}"></td>
+						{% else %}
+							<td></td>
+						{% endif %}
+						<td>{{ article.content|length > 120 ? article.content|slice(0, 120) ~ '...' : article.content }}</td>
+						<td>{{ article.createdAt|date('d/m/Y à H:i') }}</td>
+						<td>{{ article.modifiedAt ? article.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>
+							<div class="d-flex align-items-center">
+								<a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-outline-secondary mx-1">Voir</a>
+								<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-outline-secondary mx-1">Modifier</a>
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr valign="middle">
+						<td colspan="7" class="fst-italic">Aucun article trouvé.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="my-2">
+			<a href="{{ path('app_article_new') }}" class="btn btn-outline-success">Créer un artcle</a>
+		</div>
+	</div>
+{% endblock %}

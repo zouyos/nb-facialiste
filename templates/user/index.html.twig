@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Liste des membres
+{% endblock %}
+
+{% block heading %}Liste des membres
+{% endblock %}
+
+{% block main %}
+
+	{% include "inc/_flash.html.twig" %}
+
+	<div class="container-fluid my-5 mx-auto">
+		<table class="table">
+			<thead>
+				<tr valign="middle">
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Email</th>
+					<th>Roles</th>
+					<th>Civilité</th>
+					<th>Date d'ajout</th>
+					<th>Date de modification</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users|sort((a, b) => a.roles < b.roles) %}
+					<tr valign="middle">
+						<td>{{ user.nom }}</td>
+						<td>{{ user.prenom }}</td>
+						<td>{{ user.email }}</td>
+						<td>
+							{% if 'ROLE_ADMIN' in user.getroles(TRUE) %}
+								Admin
+							{% else %}
+								Utilisateur
+							{% endif %}
+						</td>
+						<td>{{ user.sexe }}</td>
+						<td>{{ user.createdAt ? user.createdAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>{{ user.modifiedAt ? user.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
+						<td>
+							<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr valign="middle">
+						<td colspan="8">Aucun membre pour l'instant.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
