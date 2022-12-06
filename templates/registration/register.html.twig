@@ -31,9 +31,9 @@
 		{{ form_row(registrationForm.nom) }}
 		{{ form_row(registrationForm.prenom, { label: 'Prénom'}) }}
 		{{ form_row(registrationForm.email) }}
-		{{ form_row(registrationForm.password, { label: 'Mot de passe'}) }}
+		{{ form_row(registrationForm.plainPassword, { label: 'Mot de passe'}) }}
 		{{ form_row(registrationForm.agreeTerms, { label: 'J\'ai pris connaissance des conditions ci-après et les accepte.'}) }}
-      <p><a href="#">CGU</a> / <a href="#">Politique de confidentialité</a></p>
+      <p><a href="{{path('app_cgu')}}">CGU</a> / <a href="{{path('app_confidentialite')}}">Politique de confidentialité</a></p>
 		  <button type="submit" class="btn btn-success">S'ínscrire</button>
       <div class="my-3">{{ form_row(registrationForm.roles) }}</div>
 	{{ form_end(registrationForm) }}

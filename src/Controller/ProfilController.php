@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Form\RegistrationFormType;
 use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/profil')]
@@ -21,23 +23,30 @@ class ProfilController extends AbstractController
   }
 
   #[Route('/modifier', name: 'app_profil_edit', methods: ['GET', 'POST'])]
-  public function edit(Request $request, EntityManagerInterface $entityManager): Response
+  public function edit(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $hasher): Response
   {
     $user = $this->getUser();
     $form = $this->createForm(RegistrationFormType::class, $user, [
       'nom' => true,
       'prenom' => true,
       'email' => true,
+      'plainPassword' => true,
       'sexe' => true,
     ]);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      $user->setModifiedAt(new \DateTimeImmutable('now'));
-      $entityManager->persist($user);
-      $entityManager->flush();
-      $this->addFlash('success', 'Votre profil a bien été mis à jour');
-      return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
+
+      if ($hasher->isPasswordValid($user, $form->get('plainPassword')->getData())) {
+
+        $user->setModifiedAt(new \DateTimeImmutable('now'));
+        $entityManager->persist($user);
+        $entityManager->flush();
+        $this->addFlash('success', 'Votre profil a bien été mis à jour');
+        return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
+      } else {
+        $this->addFlash('warning', 'Mot de passe invalide');
+      }
     }
 
     return $this->renderForm('profil/edit.html.twig', [
@@ -47,11 +56,12 @@ class ProfilController extends AbstractController
   }
 
   #[Route('/modifier-mdp', name: 'app_profil_edit_password', methods: ['GET', 'POST'])]
-  public function editPassword(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
+  public function editPassword(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, MailerInterface $mailer): Response
   {
     $user = $this->getUser();
 
     $form = $this->createForm(RegistrationFormType::class, $user, [
+      'plainPassword' => true,
       'updatePassword' => true,
     ]);
 
@@ -59,9 +69,9 @@ class ProfilController extends AbstractController
 
     if ($form->isSubmitted() && $form->isValid()) {
 
-      $currentPassword = $form->get('currentPassword')->getData();
-      $newPassword = $form->get('newPassword')->getData();
+      $currentPassword = $form->get('plainPassword')->getData();
       $confirmPassword = $form->get('confirmedPassword')->getData();
+      $newPassword = $form->get('newPassword')->getData();
 
       $access = true;
 
@@ -69,8 +79,7 @@ class ProfilController extends AbstractController
         $access = false;
         $form->get('currentPassword')->addError(new FormError('Veuillez saisir votre mot de passe actuel'));
       } else {
-        if (!$passwordHasher->isPasswordValid($user, $currentPassword))
-        {
+        if (!$passwordHasher->isPasswordValid($user, $currentPassword)) {
           $access = false;
           $form->get('currentPassword')->addError(new FormError('Le mot de passe est incorrect'));
         } else {
@@ -100,7 +109,20 @@ class ProfilController extends AbstractController
 
         $entityManager->persist($user);
         $entityManager->flush();
-        $this->addFlash('success', 'Votre mot de passe a bien été modifié');
+        //
+        $email = (new TemplatedEmail())
+          ->from('no-reply@nb-facialiste.fr')
+          ->to($user->getEmail())
+          ->subject('Mot de passe modifié sur NB Facialiste')
+          ->htmlTemplate('email/reset.html.twig')
+          ->context([
+            'user' => $user,
+            'newPassword' => $form->get('newPassword')->getData(),
+          ]);
+
+        $mailer->send($email);
+
+        $this->addFlash('success', 'Votre mot de passe a bien été modifié. Un mail de confirmation vous a été envoyé à l\'adresse : ' . $user->getEmail());
 
         return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
       }

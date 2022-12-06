@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h2>Message de
+			{{contact.nom}}
+			{{contact.prenom}}
+			<a>{{contact.email}}</a>
+		</h2>
+		<p>{{contact.createdAt|date('d/m/Y à H:i')}}</p>
+		{% if contact.sujet %}
+			<h2 style="text-decoration:underline;">Sujet :
+				{{contact.sujet}}
+			</h2>
+		{% endif %}
+		<p>
+			{{contact.message|raw|nl2br}}
+		</p>
+	</body>
+</html>

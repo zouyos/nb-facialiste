@@ -37,8 +37,8 @@ class Article
   #[ORM\Column(type: Types::TEXT)]
   #[Assert\NotBlank(message: 'Le contenu de l\'article ne peut être vide')]
   #[Assert\Length(
-    min: 5,
-    minMessage: 'Le contenu de l\'article doit comporter au minimum {{ limit }} caractères',
+    min: 15,
+    minMessage: 'Le contenu de l\'article doit comporter au moins {{ limit }} caractères',
   )]
   private ?string $content = null;
 

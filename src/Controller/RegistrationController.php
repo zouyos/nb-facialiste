@@ -6,22 +6,24 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\UserAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
   #[Route('/inscription', name: 'app_register')]
-  public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+  public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
   {
     $user = new User();
     $form = $this->createForm(RegistrationFormType::class, $user, [
       'email' => true,
-      'password' => true,
+      'plainPassword' => true,
       'nom' => true,
       'prenom' => true,
       'sexe' => true,
@@ -35,7 +37,7 @@ class RegistrationController extends AbstractController
       $user->setPassword(
         $userPasswordHasher->hashPassword(
           $user,
-          $form->get('password')->getData()
+          $form->get('plainPassword')->getData()
         )
       );
 
@@ -43,7 +45,20 @@ class RegistrationController extends AbstractController
       $entityManager->persist($user);
       $entityManager->flush();
       // do anything else you need here, like send an email
-      $this->addFlash('success', 'Votre compte a bien été créé');
+      $email = (new TemplatedEmail())
+        ->from('no-reply@nb-facialiste.fr')
+        ->to($user->getEmail())
+        ->subject('Vos identifiants de connexion sur NB Facialiste')
+        ->htmlTemplate('email/register.html.twig')
+        ->context([
+          'user' => $user,
+          'plainPassword' => $form->get('plainPassword')->getData(),
+        ]);
+
+      $mailer->send($email);
+
+      $this->addFlash('success', 'Votre compte a bien été créé !
+      Un email de confirmation vous a été envoyé à l\'adresse : ' . $user->getEmail());
 
       return $userAuthenticator->authenticateUser(
         $user,

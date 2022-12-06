@@ -20,7 +20,7 @@ class HomeController extends AbstractController
     ]);
   }
 
-  #[Route('/', name: 'app_home', methods: ['GET'])]
+  #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
   public function index(SliderRepository $sliderRepository, ArticleRepository $articleRepository): Response
   {
     $slides = $sliderRepository->findBy(['status' => true], ['ordre' => 'ASC']);
@@ -68,9 +68,21 @@ class HomeController extends AbstractController
     ]);
   }
 
-  #[Route('/contact', name: 'app_contact', methods: ['GET'])]
-  public function contact(): Response
+  #[Route('/mentions', name: 'app_mentions', methods: ['GET'])]
+  public function mentions(): Response
   {
-    return $this->render('home/contact.html.twig');
+    return $this->render('home/mentions.html.twig');
+  }
+
+  #[Route('/confidentialite', name: 'app_confidentialite', methods: ['GET'])]
+  public function confidentialite(): Response
+  {
+    return $this->render('home/politique.html.twig');
+  }
+
+  #[Route('/cgu', name: 'app_cgu', methods: ['GET'])]
+  public function cgu(): Response
+  {
+    return $this->render('home/cgu.html.twig');
   }
 }

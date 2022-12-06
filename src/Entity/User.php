@@ -20,6 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   private ?int $id = null;
 
   #[ORM\Column(length: 180, unique: true)]
+  #[Assert\Email()]
   #[Assert\NotBlank(message: 'Vous devez renseigner un email')]
   private ?string $email = null;
 
@@ -41,6 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   private ?string $prenom = null;
 
   #[ORM\Column(length: 50)]
+  #[Assert\NotNull()]
   private ?string $sexe = null;
 
   #[ORM\Column]
@@ -48,6 +50,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
   #[ORM\Column(nullable: true)]
   private ?\DateTimeImmutable $modifiedAt = null;
+
+  private ?string $plainPassword = null;
 
   public function getId(): ?int
   {
@@ -157,25 +161,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
   public function getCreatedAt(): ?\DateTimeImmutable
   {
-      return $this->createdAt;
+    return $this->createdAt;
   }
 
   public function setCreatedAt(\DateTimeImmutable $createdAt): self
   {
-      $this->createdAt = $createdAt;
+    $this->createdAt = $createdAt;
 
-      return $this;
+    return $this;
   }
 
   public function getModifiedAt(): ?\DateTimeImmutable
   {
-      return $this->modifiedAt;
+    return $this->modifiedAt;
   }
 
   public function setModifiedAt(?\DateTimeImmutable $modifiedAt): self
   {
-      $this->modifiedAt = $modifiedAt;
+    $this->modifiedAt = $modifiedAt;
 
-      return $this;
+    return $this;
+  }
+
+  public function getPlainPassword(): ?string
+  {
+    return $this->plainPassword;
+  }
+
+  public function setPlainPassword(?string $plainPassword): self
+  {
+    $this->plainPassword = $plainPassword;
+
+    return $this;
   }
 }

@@ -22,7 +22,7 @@
 				{{ article.categorie.titre }}
 			</p>
 		{% endif %}
-		<p class="text-justify">{{ article.content|nl2br }}</p>
+		<p class="text-justify">{{ article.content|raw|nl2br }}</p>
 		<p class="my-4 fst-italic fw-bold fs-sm">
 			Publié le
 			{{ article.createdAt|date('d/m/Y à H:i') }}

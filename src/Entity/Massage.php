@@ -28,13 +28,13 @@ class Massage
   #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'photoName')]
   private ?File $photoFile = null;
 
-  #[ORM\Column]
+  #[ORM\Column(nullable: true)]
   private ?float $prix = null;
 
   #[ORM\Column(type: Types::TEXT, nullable: true)]
   private ?string $descriptionLongue = null;
 
-  #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+  #[ORM\Column(type: Types::TIME_MUTABLE)]
   #[Assert\NotNull(message: 'Veuillez choisir une durée valide')]
   private ?\DateTimeInterface $duree = null;
 

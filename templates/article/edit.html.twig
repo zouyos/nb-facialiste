@@ -19,7 +19,7 @@
 		<div class="my-2">
 			{{ form_errors(form.content) }}
 		</div>
-		{{ form_widget(form.content) }}
+		{{ form_widget(form.content)|raw }}
 		<div class="my-3 d-flex align-items-center">
 			<button class="btn btn-success me-2">Mettre à jour</button>
 			{{ form_end(form) }}

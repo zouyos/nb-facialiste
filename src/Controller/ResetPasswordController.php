@@ -20,7 +20,7 @@ use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
-#[Route('/reset-password')]
+#[Route('/nouveau-mdp')]
 class ResetPasswordController extends AbstractController
 {
   use ResetPasswordControllerTrait;
@@ -56,7 +56,7 @@ class ResetPasswordController extends AbstractController
   /**
    * Confirmation page after a user has requested a password reset.
    */
-  #[Route('/check-email', name: 'app_check_email')]
+  #[Route('/verifier-email', name: 'app_check_email')]
   public function checkEmail(): Response
   {
     // Generate a fake token if the user does not exist or someone hit this page directly.
@@ -121,6 +121,8 @@ class ResetPasswordController extends AbstractController
       // The session is cleaned up after the password has been changed.
       $this->cleanSessionAfterReset();
 
+      $this->addFlash('success', 'Le mot de passe a été modifié avec succès');
+
       return $this->redirectToRoute('app_profil');
     }
 
@@ -157,12 +159,13 @@ class ResetPasswordController extends AbstractController
     }
 
     $email = (new TemplatedEmail())
-      ->from(new Address('hamza.benketaf@gmail.com', 'Admin'))
+      ->from(new Address('no-reply@nb-facialiste.fr'))
       ->to($user->getEmail())
-      ->subject('Your password reset request')
+      ->subject('Votre demande de changement de mot de passe')
       ->htmlTemplate('reset_password/email.html.twig')
       ->context([
         'resetToken' => $resetToken,
+        'user' => $user
       ]);
 
     $mailer->send($email);
