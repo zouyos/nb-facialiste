@@ -35,6 +35,6 @@
 		{{ form_row(registrationForm.agreeTerms, { label: 'J\'ai pris connaissance des conditions ci-après et les accepte.'}) }}
       <p><a href="{{path('app_cgu')}}">CGU</a> / <a href="{{path('app_confidentialite')}}">Politique de confidentialité</a></p>
 		  <button type="submit" class="btn btn-success">S'ínscrire</button>
-      <div class="my-3">{{ form_row(registrationForm.roles) }}</div>
+      {# <div class="my-3">{{ form_row(registrationForm.roles) }}</div> #}
 	{{ form_end(registrationForm) }}
 </div>{% endif %}{% endblock %}
