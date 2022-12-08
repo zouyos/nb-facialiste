@@ -23,6 +23,7 @@ class HomeController extends AbstractController
   #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
   public function index(SliderRepository $sliderRepository, ArticleRepository $articleRepository): Response
   {
+    $this->addFlash('warning', 'Site en construction');
     $slides = $sliderRepository->findBy(['status' => true], ['ordre' => 'ASC']);
     $articles = $articleRepository->findBy([], ['createdAt' => 'DESC'], 3);
 
@@ -53,7 +54,7 @@ class HomeController extends AbstractController
   #[Route('/prestations', name: 'app_prestations', methods: ['GET'])]
   public function prestations(MassageRepository $massageRepository): Response
   {
-    $massages = $massageRepository->findBy([], ['titre' => 'DESC']);
+    $massages = $massageRepository->findBy([], ['titre' => 'ASC']);
 
     return $this->render('home/prestations/index.html.twig', [
       'massages' => $massages
