@@ -23,7 +23,6 @@ class HomeController extends AbstractController
   #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
   public function index(SliderRepository $sliderRepository, ArticleRepository $articleRepository): Response
   {
-    $this->addFlash('warning', 'Site en construction');
     $slides = $sliderRepository->findBy(['status' => true], ['ordre' => 'ASC']);
     $articles = $articleRepository->findBy([], ['createdAt' => 'DESC'], 3);
 
