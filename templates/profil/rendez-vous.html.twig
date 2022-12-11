@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	| Mes Rendez-Vous
+{% endblock %}
+
+{% block heading %}
+	Mes Rendez-Vous
+{% endblock %}
+
+{% block main %}
+
+	{% include "inc/_flash.html.twig" %}
+
+	<div class="container-fluid my-4 mx-auto"></div>
+
+{% endblock %}
