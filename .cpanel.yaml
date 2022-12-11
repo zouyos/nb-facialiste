@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=home2/mhkc7139/sites/nb-facialiste/
