@@ -36,7 +36,7 @@ class ContactController extends AbstractController
 
       $email = (new TemplatedEmail())
         ->from($contact->getEmail())
-        ->to('admin@nb-facialiste.com');
+        ->to('admin@nb-facialiste.fr');
       if ($contact->getSujet() !== null) {
         $email->subject($contact->getSujet());
       }
