@@ -35,7 +35,7 @@
   user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 .custom-btn:focus,
 .custom-btn:active:focus {
@@ -75,6 +75,52 @@
 .primary:active {
   color: #fff;
   background-color: $primary-color-darker;
+  border-color: #adadad;
+}
+
+/* secondary
+---------------------------- */
+.secondary {
+  color: #fff;
+  background-color: #47516b;
+  border-color: #ccc;
+}
+.secondary:focus {
+  color: #fff;
+  background-color: #38435e; 
+  border-color: #8c8c8c;
+}
+.secondary:hover {
+  color: #fff;
+  background-color: #38435e;
+  border-color: #adadad;
+}
+.secondary:active {
+  color: #fff;
+  background-color: #38435e;
+  border-color: #adadad;
+}
+
+/* cancel
+---------------------------- */
+.cancel {
+  color: #fff;
+  background-color: #ff6347;
+  border-color: #ccc;
+}
+.cancel:focus {
+  color: #fff;
+  background-color: #cc4d37; 
+  border-color: #8c8c8c;
+}
+.cancel:hover {
+  color: #fff;
+  background-color: #cc4d37;
+  border-color: #adadad;
+}
+.cancel:active {
+  color: #fff;
+  background-color: #cc4d37;
   border-color: #adadad;
 }
 

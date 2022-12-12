@@ -21,8 +21,8 @@
 		{{ form_row(form.email) }}
 		{{ form_row(form.plainPassword, { label: 'Saisir votre mot de passe pour confirmer la modification', label_attr: {'class': 'fs-sm text-secondary fst-italic'} }) }}
 		<button class="custom-btn primary my-2" type="submit">{{button_label|default('Mettre à jour')}}</button>
-		<a href="{{path('app_profil_edit_password')}}" class="btn btn-danger my-2">Modifier le mot de passe</a>
-		<a href="{{path('app_profil')}}" class="btn btn-secondary my-2">Retour au profil</a>
+		<a href="{{path('app_profil_edit_password')}}" class="custom-btn cancel my-2">Modifier le mot de passe</a>
+		<a href="{{path('app_profil')}}" class="custom-btn secondary my-2">Retour au profil</a>
 		{{form_end(form)}}
 	</div>
 {% endblock %}

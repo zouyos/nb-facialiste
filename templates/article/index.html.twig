@@ -47,8 +47,8 @@
 						<td>{{ article.modifiedAt ? article.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
 							<div class="d-flex align-items-center">
-								<a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-secondary mx-1">Voir</a>
-								<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-secondary mx-1">Modifier</a>
+								<a href="{{ path('app_article_show', {'id': article.id}) }}" class="custom-btn secondary mx-1">Voir</a>
+								<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="custom-btn secondary mx-1">Modifier</a>
 							</div>
 						</td>
 					</tr>
@@ -61,7 +61,7 @@
 		</table>
 		<div class="my-2">
 			<a href="{{ path('app_article_new') }}" class="custom-btn primary me-2">Créer un article</a>
-			<a href="{{ path('app_categorie_index') }}" class="btn btn-secondary">Gérer les catégories</a>
+			<a href="{{ path('app_categorie_index') }}" class="custom-btn secondary">Gérer les catégories</a>
 		</div>
 	</div>
 {% endblock %}

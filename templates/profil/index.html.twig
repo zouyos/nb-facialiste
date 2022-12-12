@@ -26,8 +26,8 @@
 		<p>Date d'ínscription :
 			{{app.user.createdAt | date('d/m/Y')}}
 		</p>
-		<a href="{{path('app_profil_edit')}}" class="btn btn-secondary my-2">Modifier le profil</a>
-		<a href="{{path('app_logout')}}" class="btn btn-danger my-2">Se déconnecter</a>
+		<a href="{{path('app_profil_edit')}}" class="custom-btn secondary my-2">Modifier le profil</a>
+		<a href="{{path('app_logout')}}" class="custom-btn cancel my-2">Se déconnecter</a>
 	</div>
 
 {% endblock %}
