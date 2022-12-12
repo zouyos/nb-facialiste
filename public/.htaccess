@@ -1,3 +1,11 @@
+# Redirection vers HTTPS
+RewriteCond %{SERVER_PORT} ^80$ [OR]
+RewriteCond %{HTTPS} =off
+RewriteRule ^(.*)$ https://nb-facialiste.fr/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.domaine\.tld [NC]
+RewriteRule ^(.*)$ https://nb-facialiste.fr/$1 [R=301,L]
+
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
 # mod_rewrite). Additionally, this reduces the matching process for the
