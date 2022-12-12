@@ -14,6 +14,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MassageType extends AbstractType
 {
+
+  public function minutes()
+  {
+    $minutes = [];
+
+    for ($i = 0; $i < 60; $i += 5) {
+      $minutes[] = $i;
+    }
+    return $minutes;
+  }
+
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
     $builder
@@ -33,6 +44,8 @@ class MassageType extends AbstractType
       ])
       ->add('duree', TimeType::class, [
         'required' => false,
+        "hours" => [0, 1, 2],
+        "minutes" => $this->minutes(),
         'label' => 'Durée',
         'placeholder' => false,
       ])
