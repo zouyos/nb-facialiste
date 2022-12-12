@@ -4,7 +4,7 @@
 @import './placeholders';
 @import './variables';
 
-/* GÉNÉRAL */
+/* FLEX */
 
 .flex {
   @extend %flex;
@@ -213,9 +213,13 @@ nav {
 
 /* CONTACT */
 
-#contact a {
+.green-link a {
   text-decoration: none;
   color: #5a8357;
+}
+
+.green-link a:hover {
+  color: #477044;
 }
 
 #map {

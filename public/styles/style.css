@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* IMPORTS */
 #articles-home div:first-child, .flex {
   display: flex;
@@ -11,7 +10,7 @@
   flex-direction: column;
 }
 
-/* GÉNÉRAL */
+/* FLEX */
 html,
 body {
   min-height: 100vh;
@@ -58,15 +57,15 @@ main {
 }
 
 .fs-sm {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .fs-md {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .fs-lg {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 /* IMAGES */
@@ -197,9 +196,13 @@ nav {
 }
 
 /* CONTACT */
-#contact a {
+.green-link a {
   text-decoration: none;
   color: #5a8357;
+}
+
+.green-link a:hover {
+  color: #477044;
 }
 
 #map {
