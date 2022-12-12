@@ -10,9 +10,9 @@
 	<div class="container p-5 border border-2 rounded col-md-4 my-5 mx-auto">
 		{{form_start(form)}}
 		{{form_widget(form)}}
-		<input type="submit" value="Modifier" class="btn btn-success">
+		<input type="submit" value="Modifier" class="custom-btn primary">
 		{{form_start(form)}}
-		<a href="{{path('app_profil_edit')}}" class="btn btn-outline-secondary">Retour à l'édition</a>
-		<a href="{{path('app_profil')}}" class="btn btn-outline-secondary">Retour au profil</a>
+		<a href="{{path('app_profil_edit')}}" class="btn btn-secondary">Retour à l'édition</a>
+		<a href="{{path('app_profil')}}" class="btn btn-secondary">Retour au profil</a>
 	</div>
 {% endblock %}

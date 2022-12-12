@@ -49,7 +49,7 @@
 						<td>{{ massage.createdAt ? massage.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ massage.modifiedAt ? massage.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
-							<a href="{{ path('app_massage_edit', {'id': massage.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+							<a href="{{ path('app_massage_edit', {'id': massage.id}) }}" class="btn btn-secondary">Modifier</a>
 						</td>
 					</tr>
 				{% else %}
@@ -59,6 +59,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<a href="{{ path('app_massage_new') }}" class="btn btn-success">Ajouter une prestation</a>
+		<a href="{{ path('app_massage_new') }}" class="custom-btn primary">Ajouter une prestation</a>
 	</div>
 {% endblock %}

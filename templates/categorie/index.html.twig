@@ -30,7 +30,7 @@
 						<td>{{ categorie.createdAt ? categorie.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ categorie.modifiedAt ? categorie.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
-							<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+							<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-secondary">Modifier</a>
 						</td>
 					</tr>
 				{% else %}
@@ -41,7 +41,7 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_categorie_new') }}" class="btn btn-success me-2">Ajouter une catégorie</a>
-		<a href="{{ path('app_categorie_new') }}" class="btn btn-outline-secondary">Retour gestion des articles</a>
+		<a href="{{ path('app_categorie_new') }}" class="custom-btn primary me-2">Ajouter une catégorie</a>
+		<a href="{{ path('app_categorie_new') }}" class="btn btn-secondary">Retour gestion des articles</a>
 	</div>
 {% endblock %}
