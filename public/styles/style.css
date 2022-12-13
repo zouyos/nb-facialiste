@@ -228,12 +228,12 @@ main {
   width: 100%;
   height: 20rem;
   color: #fff;
-  text-shadow: -2px -2px 0 #2d3b58, 2px -2px 0 #2d3b58, -2px 2px 0 #2d3b58, 2px 2px 0 #2d3b58;
+  text-shadow: -1px -1px 0 #2d3b58, 1px -1px 0 #2d3b58, -1px 1px 0 #2d3b58, 1px 1px 0 #2d3b58;
 }
 
 #main-title {
   color: #2d3b58;
-  text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
 /* NAV */
