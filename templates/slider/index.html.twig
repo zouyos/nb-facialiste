@@ -36,8 +36,9 @@
 						</td>
 						<td>{{ slider.createdAt ? slider.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ slider.modifiedAt ? slider.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
-						<td>
-							<a href="{{ path('app_slider_edit', {'id': slider.id}) }}" class="custom-btn secondary">Modifier</a>
+						<td class="flex">
+							<a href="{{ path('app_slider_edit', {'id': slider.id}) }}" class="custom-btn secondary me-2">Modifier</a>
+              {{ include('slider/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

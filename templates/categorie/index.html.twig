@@ -29,8 +29,9 @@
 						<td>{{ categorie.titre }}</td>
 						<td>{{ categorie.createdAt ? categorie.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ categorie.modifiedAt ? categorie.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
-						<td>
-							<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="custom-btn secondary">Modifier</a>
+						<td class="flex">
+							<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="custom-btn secondary me-2">Modifier</a>
+              {{ include('categorie/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}
