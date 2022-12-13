@@ -17,7 +17,8 @@
 /* BTN */
 
 .custom-btn {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   padding: 6px 12px;
   margin-bottom: 0;
 
@@ -88,25 +89,25 @@
 ---------------------------- */
 .secondary {
   color: #fff;
-  background-color: #47516b;
+  background-color: $secondary-color;
   border-color: #ccc;
 }
 
 .secondary:focus {
   color: #fff;
-  background-color: #38435e;
+  background-color: $secondary-color-darker;
   border-color: #8c8c8c;
 }
 
 .secondary:hover {
   color: #fff;
-  background-color: #38435e;
+  background-color: $secondary-color-darker;
   border-color: #adadad;
 }
 
 .secondary:active {
   color: #fff;
-  background-color: #38435e;
+  background-color: $secondary-color-darker;
   border-color: #adadad;
 }
 
@@ -114,25 +115,25 @@
 ---------------------------- */
 .cancel {
   color: #fff;
-  background-color: #ff6347;
+  background-color: $cancel-color;
   border-color: #ccc;
 }
 
 .cancel:focus {
   color: #fff;
-  background-color: #cc4d37;
+  background-color: $cancel-color-darker;
   border-color: #8c8c8c;
 }
 
 .cancel:hover {
   color: #fff;
-  background-color: #cc4d37;
+  background-color: $cancel-color-darker;
   border-color: #adadad;
 }
 
 .cancel:active {
   color: #fff;
-  background-color: #cc4d37;
+  background-color: $cancel-color-darker;
   border-color: #adadad;
 }
 

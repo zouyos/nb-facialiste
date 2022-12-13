@@ -13,7 +13,8 @@
 /* FLEX */
 /* BTN */
 .custom-btn {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   padding: 6px 12px;
   margin-bottom: 0;
   display: inline-block;
@@ -81,25 +82,25 @@
 ---------------------------- */
 .secondary {
   color: #fff;
-  background-color: #47516b;
+  background-color: #435373;
   border-color: #ccc;
 }
 
 .secondary:focus {
   color: #fff;
-  background-color: #38435e;
+  background-color: #2d3b58;
   border-color: #8c8c8c;
 }
 
 .secondary:hover {
   color: #fff;
-  background-color: #38435e;
+  background-color: #2d3b58;
   border-color: #adadad;
 }
 
 .secondary:active {
   color: #fff;
-  background-color: #38435e;
+  background-color: #2d3b58;
   border-color: #adadad;
 }
 
