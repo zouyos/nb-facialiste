@@ -11,7 +11,7 @@
 
 {% block main %}
 
-	<div class="container mb-3">
+	<article class="container mb-3">
 		{% if article.imageName %}
 			<p class="text-center my-3"><img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('resize800') }}" alt="{{article.titre}}" class="rounded-3"></p>
 		{% endif %}
@@ -21,6 +21,6 @@
 			{{ article.createdAt|date('d/m/Y') }}
 		</p>
 		<a href="{{ path('app_articles') }}" class="custom-btn secondary my-3">Tous les articles</a>
-	</div>
+	</article>
 
 {% endblock %}

@@ -23,10 +23,10 @@
 					<h3 class="card-title text-center my-2">{{ massage.titre }}</h3>
 					<p class="fs-md fst-italic text-center my-2">{{ massage.legende }}</p>
 					<div class="row mt-4 mb-2">
-						<p class="card-text col-9 fs-5">
+						<p class="card-text col-9">
 							{{ massage.descriptionCourte }}
 						</p>
-						<p class="h6 card-text text-secondary col-3">
+						<p class="fs-md card-text text-secondary col-3">
 							Durée
 							{% if massage.duree|date('H') < 1 %}
 								{{ massage.duree|date('i') }}mn

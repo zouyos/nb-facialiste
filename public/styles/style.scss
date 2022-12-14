@@ -288,6 +288,14 @@ nav {
 
 /* ACCUEIL */
 
+@media screen and (min-width: 1200px) {
+  .accueil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .divider {
   height: 1.5rem;
   width: 33%;
