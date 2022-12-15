@@ -38,6 +38,10 @@ class Massage
   #[Assert\NotNull(message: 'Veuillez choisir une durée valide')]
   private ?\DateTimeInterface $duree = null;
 
+  #[ORM\Column(length: 255)]
+  #[Assert\NotBlank(message: 'Veuillez renseigner une courte description')]
+  private ?string $descriptionCourte = null;
+
   #[ORM\Column(nullable: true)]
   private ?\DateTimeImmutable $createdAt = null;
 
@@ -47,9 +51,6 @@ class Massage
   #[ORM\Column(length: 50, nullable: true)]
   private ?string $legende = null;
 
-  #[ORM\Column(length: 255)]
-  #[Assert\NotBlank(message: 'Veuillez renseigner une courte description')]
-  private ?string $descriptionCourte = null;
 
   public function getId(): ?int
   {

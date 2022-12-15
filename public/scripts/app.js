@@ -11,6 +11,6 @@ window.addEventListener("beforeunload", function (e) {
     "Il existe des changements non enregistrés." +
     "Si vous quittez la page ces données seront perdues.";
 
-  (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-  return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+  (e || window.event).returnValue = confirmationMessage;
+  return confirmationMessage;
 });

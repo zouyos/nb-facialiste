@@ -48,9 +48,11 @@
 						<td>{{ massage.prix }}€</td>
 						<td>{{ massage.createdAt ? massage.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ massage.modifiedAt ? massage.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
-						<td class="flex">
-							<a href="{{ path('app_massage_edit', {'id': massage.id}) }}" class="custom-btn secondary me-2">Modifier</a>
-              {{ include('massage/_delete_form.html.twig') }}
+						<td>
+							<div class="flex">
+								<a href="{{ path('app_massage_edit', {'id': massage.id}) }}" class="custom-btn secondary me-2">Modifier</a>
+								{{ include('massage/_delete_form.html.twig') }}
+							</div>
 						</td>
 					</tr>
 				{% else %}

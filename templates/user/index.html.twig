@@ -42,9 +42,11 @@
 						<td>{{ user.sexe }}</td>
 						<td>{{ user.createdAt ? user.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ user.modifiedAt ? user.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
-						<td class="flex">
-							<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="custom-btn secondary me-2">Modifier</a>
-              {{ include('user/_delete_form.html.twig') }}
+						<td>
+							<div class="flex">
+								<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="custom-btn secondary me-2">Modifier</a>
+								{{ include('user/_delete_form.html.twig') }}
+							</div>
 						</td>
 					</tr>
 				{% else %}

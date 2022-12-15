@@ -40,7 +40,7 @@ class ArticleType extends AbstractType
         'label' => false,
         'attr' => [
           'placeholder' => 'Contenu de l\'article...',
-          'rows' => 24
+          'rows' => 12
         ]
       ]);
   }

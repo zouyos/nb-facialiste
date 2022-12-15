@@ -33,7 +33,6 @@ class RegistrationController extends AbstractController
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      // encode the plain password
       $user->setPassword(
         $userPasswordHasher->hashPassword(
           $user,
@@ -44,7 +43,7 @@ class RegistrationController extends AbstractController
       $user->setCreatedAt(new \DateTimeImmutable('now'));
       $entityManager->persist($user);
       $entityManager->flush();
-      // do anything else you need here, like send an email
+      
       $email = (new TemplatedEmail())
         ->from('no-reply@nb-facialiste.fr')
         ->to($user->getEmail())

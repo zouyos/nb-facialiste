@@ -36,19 +36,19 @@
 						</td>
 						<td>{{ slider.createdAt ? slider.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ slider.modifiedAt ? slider.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
-						<td class="flex">
-							<a href="{{ path('app_slider_edit', {'id': slider.id}) }}" class="custom-btn secondary me-2">Modifier</a>
-              {{ include('slider/_delete_form.html.twig') }}
+						<td>
+							<div class="flex">
+								<a href="{{ path('app_slider_edit', {'id': slider.id}) }}" class="custom-btn secondary me-2">Modifier</a>
+								{{ include('slider/_delete_form.html.twig') }}
+							</td>
 						</td>
 					</tr>
-				{% else %}
-					<tr valign="middle">
-						<td colspan="7" class="fst-italic">Aucune image trouvée.</td>
-					</tr>
-				{% endfor %}
+				</div>
 			</tbody>
-		</table>
-
-		<a href="{{ path('app_slider_new') }}" class="custom-btn primary">Ajouter une image</a>
-	</div>
-{% endblock %}
+		</tr>
+	{% else %}
+		<tr valign="middle">
+			<td colspan="7" class="fst-italic">Aucune image trouvée.</td>
+		</tr>
+	{% endfor %}
+</tbody></table><a href="{{ path('app_slider_new') }}" class="custom-btn primary">Ajouter une image</a></div>{% endblock %}

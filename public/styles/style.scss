@@ -145,6 +145,12 @@ body {
   flex-direction: column;
 }
 
+main {
+  flex: 1;
+  color: $secondary-color-darker;
+  font-size: 1rem;
+}
+
 footer {
   background-color: $primary-color;
 
@@ -157,10 +163,7 @@ footer {
   }
 }
 
-main {
-  flex: 1;
-  color: $secondary-color-darker;
-}
+
 
 /* FONTS */
 
@@ -248,7 +251,7 @@ main {
     1px 1px 0 $secondary-color-darker;
 }
 
-#main-title {
+.deco-outline {
   color: $secondary-color-darker;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
     1px 1px 0 #fff;

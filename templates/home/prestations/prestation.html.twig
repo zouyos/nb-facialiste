@@ -25,20 +25,22 @@
 				<h2>{{ massage.titre }}
 					<span class="fst-italic">{{ massage.legende ? ' ~ ' ~ massage.legende : ''}}</span>
 				</h2>
-				<p class="text-justify">
-					{{massage.descriptionLongue|nl2br}}
-				</p>
-				<p class="my-4 fs-md text-secondary">Durée
+				<p class="my-4 fs-lg text-secondary">Durée
 					{% if massage.duree|date('H') < 1 %}
 						{{ massage.duree|date('i') }}mn
 					{% else %}
 						{{ massage.duree|date('H') ~ 'h' ~ massage.duree|date('i') }}
 					{% endif %}
 				</p>
-				<p class="my-4 fst-italic">
-					Pour toute prise de rendez-vous :
-					<a href="{{path('app_home')}}#contact" class="custom-btn primary fw-bold m-1">Contactez-moi</a>
+				<p class="text-justify fs-md">
+					{{massage.descriptionLongue|nl2br}}
 				</p>
+				<p class="mt-4 mb-2 fst-italic text-center">
+					Pour l'instant, pour toute prise de rendez-vous :
+				</p>
+				<div class="flex">
+					<a href="{{path('app_home')}}#contact" class="custom-btn primary fw-bold m-1">Contactez-moi</a>
+				</div>
 			</div>
 		</div>
 		<div class="mx-4">

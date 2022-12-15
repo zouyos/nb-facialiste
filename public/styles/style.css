@@ -140,6 +140,12 @@ body {
   flex-direction: column;
 }
 
+main {
+  flex: 1;
+  color: #2d3b58;
+  font-size: 1rem;
+}
+
 footer {
   background-color: #7da57a;
 }
@@ -149,11 +155,6 @@ footer a:visited,
 footer a:active {
   text-decoration: none;
   color: #f7f7f7;
-}
-
-main {
-  flex: 1;
-  color: #2d3b58;
 }
 
 /* FONTS */
@@ -178,23 +179,23 @@ main {
 }
 
 .fs-xs {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .fs-sm {
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 .fs-md {
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 .fs-lg {
-  font-size: 24px;
+  font-size: 1.25rem;
 }
 
 .fs-xl {
-  font-size: 30px;
+  font-size: 1.5rem;
 }
 
 /* IMAGES */
@@ -234,7 +235,7 @@ main {
   text-shadow: -1px -1px 0 #2d3b58, 1px -1px 0 #2d3b58, -1px 1px 0 #2d3b58, 1px 1px 0 #2d3b58;
 }
 
-#main-title {
+.deco-outline {
   color: #2d3b58;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
