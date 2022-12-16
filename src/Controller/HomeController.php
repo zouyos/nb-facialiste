@@ -68,6 +68,12 @@ class HomeController extends AbstractController
     ]);
   }
 
+  #[Route('admin/panel-admin', name: 'app_admin', methods: ['GET'])]
+  public function dashboard(): Response
+  {
+    return $this->render('admin/dashboard.html.twig');
+  }
+
   #[Route('/mentions', name: 'app_mentions', methods: ['GET'])]
   public function mentions(): Response
   {

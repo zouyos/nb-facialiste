@@ -19,15 +19,18 @@ class ContactType extends AbstractType
     $builder
       ->add('nom', TextType::class, [
         'required' => false,
+        'placeholder' => '(Facultatif)'
       ])
       ->add('prenom', TextType::class, [
         'required' => false,
+        'placeholder' => '(Facultatif)'
       ])
       ->add('email', EmailType::class, [
         'required' => false,
       ])
       ->add('sujet', TextType::class, [
         'required' => false,
+        'placeholder' => '(Facultatif)'
       ])
       ->add('message', TextareaType::class, [
         'required' => false,
