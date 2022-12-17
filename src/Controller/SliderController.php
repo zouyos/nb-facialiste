@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('admin/slider')]
+#[Route('admin/carrousel')]
 class SliderController extends AbstractController
 {
   #[Route('/', name: 'app_slider_index', methods: ['GET'])]

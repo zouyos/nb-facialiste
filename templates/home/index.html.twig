@@ -95,11 +95,11 @@
 						{% endif %}
 					</div>
 					<div class="w-100 h-100 px-2">
-						<h3 class="h5 fw-bolder my-3 text-center lh-sm">{{ article.titre|length > 75 ? article.titre|slice(0, 75) ~ '...' : article.titre }}</h3>
+						<h3 class="h5 fw-bolder my-3 text-center fs-sm fw-bold">{{ article.titre|length > 75 ? article.titre|slice(0, 75) ~ '...' : article.titre }}</h3>
 						{% if article.categorie %}
 							<p class="fs-sm my-2">[{{ article.categorie.titre }}]</p>
 						{% endif %}
-						<p class="fs-sm fst-italic fw-bold my-2">{{ article.createdAt|date('d/m/Y') }}</p>
+						<p class="fs-sm fst-italic my-2">{{ article.createdAt|date('d/m/Y') }}</p>
 						<p class="text-justify my-2">{{ article.content|length > 125 ? article.content|slice(0, 125) ~ '...' : article.content }}</p>
 					</div>
 				</div>
