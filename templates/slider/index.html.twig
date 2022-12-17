@@ -12,11 +12,10 @@
 
 	{% include "inc/_flash.html.twig" %}
 
-	<div class="my-3 d-flex align-items-center flex-wrap">
-		<a href="{{ path('app_slider_new') }}" class="custom-btn primary">Ajouter une image</a>
-	</div>
-
 	<div class="container-fluid my-5 mx-auto">
+		<div class="my-3 d-flex justify-content-end align-items-center flex-wrap">
+			<a href="{{ path('app_slider_new') }}" class="custom-btn primary">Ajouter une image</a>
+		</div>
 		<table class="table">
 			<thead>
 				<tr valign="middle">
@@ -41,18 +40,18 @@
 						<td>{{ slider.createdAt ? slider.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ slider.modifiedAt ? slider.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
-							<div class="flex">
+							<div class="flex justify-content-end">
 								<a href="{{ path('app_slider_edit', {'id': slider.id}) }}" class="custom-btn secondary me-2">Modifier</a>
 								{{ include('slider/_delete_form.html.twig') }}
-							</td>
+							</div>
 						</td>
 					</tr>
-				</div>
+				{% else %}
+					<tr valign="middle">
+						<td colspan="7" class="fst-italic">Aucune image trouvée.</td>
+					</tr>
+				{% endfor %}
 			</tbody>
-		</tr>
-	{% else %}
-		<tr valign="middle">
-			<td colspan="7" class="fst-italic">Aucune image trouvée.</td>
-		</tr>
-	{% endfor %}
-</tbody></table>{% endblock %}
+		</table>
+	</div>
+{% endblock %}

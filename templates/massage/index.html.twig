@@ -12,11 +12,10 @@
 
 	{% include "inc/_flash.html.twig" %}
 
-	<div class="my-3 d-flex align-items-center flex-wrap">
-		<a href="{{ path('app_massage_new') }}" class="custom-btn primary">Ajouter une prestation</a>
-	</div>
-
 	<div class="container-fluid my-5 mx-auto">
+		<div class="my-3 d-flex justify-content-end align-items-center flex-wrap">
+			<a href="{{ path('app_massage_new') }}" class="custom-btn primary">Ajouter une prestation</a>
+		</div>
 		<table class="table">
 			<thead>
 				<tr valign="middle">
@@ -53,7 +52,7 @@
 						<td>{{ massage.createdAt ? massage.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ massage.modifiedAt ? massage.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
-							<div class="flex">
+							<div class="flex justify-content-end">
 								<a href="{{ path('app_massage_edit', {'id': massage.id}) }}" class="custom-btn secondary me-2">Modifier</a>
 								{{ include('massage/_delete_form.html.twig') }}
 							</div>
