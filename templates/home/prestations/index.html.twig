@@ -21,12 +21,12 @@
 				{% endif %}
 				<div class="card-body">
 					<h3 class="card-title text-center my-2">{{ massage.titre }}</h3>
-					<p class="fs-md fst-italic text-center my-2">{{ massage.legende }}</p>
-					<div class="row mt-4 mb-2">
-						<p class="card-text col-9">
+					<p class="fs-lg fst-italic text-center my-2">{{ massage.legende }}</p>
+					<div class="row justify-content-between mt-4 mb-2">
+						<p class="card-text col-8 fs-md">
 							{{ massage.descriptionCourte }}
 						</p>
-						<p class="fs-md card-text text-secondary col-3">
+						<p class="fs-lg card-text text-secondary col-4">
 							Durée
 							{% if massage.duree|date('H') < 1 %}
 								{{ massage.duree|date('i') }}mn
