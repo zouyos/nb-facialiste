@@ -12,6 +12,10 @@
 
 	{% include "inc/_flash.html.twig" %}
 
+	<div class="my-3 d-flex align-items-center flex-wrap">
+		<a href="{{ path('app_slider_new') }}" class="custom-btn primary">Ajouter une image</a>
+	</div>
+
 	<div class="container-fluid my-5 mx-auto">
 		<table class="table">
 			<thead>
@@ -51,4 +55,4 @@
 			<td colspan="7" class="fst-italic">Aucune image trouvée.</td>
 		</tr>
 	{% endfor %}
-</tbody></table><a href="{{ path('app_slider_new') }}" class="custom-btn primary">Ajouter une image</a></div>{% endblock %}
+</tbody></table>{% endblock %}

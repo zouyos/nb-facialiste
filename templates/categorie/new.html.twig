@@ -5,6 +5,10 @@
 	| Ajouter une catégorie
 {% endblock %}
 
+{% block heading %}
+	Ajouter une catégorie
+{% endblock %}
+
 {% block main %}
 	<div class="container my-5">
 		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
