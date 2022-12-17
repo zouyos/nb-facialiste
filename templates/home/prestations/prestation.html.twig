@@ -32,13 +32,13 @@
 						{{ massage.duree|date('H') ~ 'h' ~ massage.duree|date('i') }}
 					{% endif %}
 				</p>
-				<p class="text-justify fs-md">
+				<p class="text-justify fs-md lh-lg">
 					{{massage.descriptionLongue|nl2br}}
 				</p>
-				<p class="mt-4 mb-2 fst-italic text-center">
+				<p class="mt-4 mb-2 fst-italic">
 					Pour l'instant, pour toute prise de rendez-vous :
 				</p>
-				<div class="flex">
+				<div class="d-flex">
 					<a href="{{path('app_home')}}#contact" class="custom-btn primary fw-bold m-1">Contactez-moi</a>
 				</div>
 			</div>
