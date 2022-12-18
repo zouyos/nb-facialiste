@@ -35,10 +35,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
   #[ORM\Column(length: 50)]
   #[Assert\NotBlank(message: 'Veuillez spécifier un nom')]
+  #[Assert\Length(
+    max: 50,
+    maxMessage: 'Le nom ne peut pas comporter plus de {{ limit }} caractères',
+  )]
   private ?string $nom = null;
 
   #[ORM\Column(length: 50)]
   #[Assert\NotBlank(message: 'Veuillez spécifier un prénom')]
+  #[Assert\Length(
+    max: 50,
+    maxMessage: 'Le prénom ne peut pas comporter plus de {{ limit }} caractères',
+  )]
   private ?string $prenom = null;
 
   #[ORM\Column(length: 50)]

@@ -17,18 +17,34 @@ class Contact
 
   #[ORM\Column(length: 50)]
   #[Assert\NotBlank(message: 'Veuillez renseigner un nom')]
+  #[Assert\Length(
+    max: 50,
+    maxMessage: 'Le nom ne peut pas comporter plus de {{ limit }} caractères',
+  )]
   private ?string $nom = null;
 
   #[ORM\Column(length: 50)]
   #[Assert\NotBlank(message: 'Veuillez renseigner un prénom')]
+  #[Assert\Length(
+    max: 50,
+    maxMessage: 'Le prénom ne peut pas comporter plus de {{ limit }} caractères',
+  )]
   private ?string $prenom = null;
 
   #[ORM\Column(length: 180)]
   #[Assert\Email()]
   #[Assert\NotBlank(message: 'Veuillez renseigner un email')]
+  #[Assert\Length(
+    max: 180,
+    maxMessage: 'Le mail ne peut pas comporter plus de {{ limit }} caractères',
+  )]
   private ?string $email = null;
 
-  #[ORM\Column(length: 50, nullable: true)]
+  #[ORM\Column(length: 20, nullable: true)]
+  #[Assert\Length(
+    max: 20,
+    maxMessage: 'Le sujet ne peut pas excéder {{ limit }} caractères',
+  )]
   private ?string $phone = null;
 
   #[ORM\Column(length: 100, nullable: true)]

@@ -36,6 +36,7 @@ class Massage
 
   #[ORM\Column(type: Types::TIME_MUTABLE)]
   #[Assert\NotNull(message: 'Veuillez choisir une durée valide')]
+  #[Assert\Positive(message: 'Veuillez choisir une durée')]
   private ?\DateTimeInterface $duree = null;
 
   #[ORM\Column(length: 255)]
@@ -53,8 +54,11 @@ class Massage
   private ?\DateTimeImmutable $modifiedAt = null;
 
   #[ORM\Column(length: 50, nullable: true)]
+  #[Assert\Length(
+    max: 50,
+    maxMessage: 'La description courte ne peut pas excéder {{ limit }} caractères',
+  )]
   private ?string $legende = null;
-
 
   public function getId(): ?int
   {
