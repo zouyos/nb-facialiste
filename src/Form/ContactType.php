@@ -11,22 +11,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 
 class ContactType extends AbstractType
 {
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
     $builder
-    ->add('email', EmailType::class, [
-      'required' => false,
-    ])
-    ->add('prenom', TextType::class, [
-      'required' => false,
-      'label' => 'Prénom (Facultatif)'
-    ])
       ->add('nom', TextType::class, [
         'required' => false,
-        'label' => 'Nom (Facultatif)'
+      ])
+      ->add('prenom', TextType::class, [
+        'required' => false,
+        'label' => 'Prénom'
+      ])
+      ->add('email', EmailType::class, [
+        'required' => false,
+      ])
+      ->add('phone', TelType::class, [
+        'required' => false,
+        'label' => 'Téléphone (Facultatif)'
       ])
       ->add('sujet', TextType::class, [
         'required' => false,

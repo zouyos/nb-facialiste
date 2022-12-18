@@ -15,16 +15,21 @@ class Contact
   #[ORM\Column]
   private ?int $id = null;
 
-  #[ORM\Column(length: 50, nullable: true)]
+  #[ORM\Column(length: 50)]
+  #[Assert\NotBlank(message: 'Veuillez renseigner un nom')]
   private ?string $nom = null;
 
-  #[ORM\Column(length: 50, nullable: true)]
+  #[ORM\Column(length: 50)]
+  #[Assert\NotBlank(message: 'Veuillez renseigner un prénom')]
   private ?string $prenom = null;
 
   #[ORM\Column(length: 180)]
   #[Assert\Email()]
   #[Assert\NotBlank(message: 'Veuillez renseigner un email')]
   private ?string $email = null;
+
+  #[ORM\Column(length: 50, nullable: true)]
+  private ?string $phone = null;
 
   #[ORM\Column(length: 100, nullable: true)]
   #[Assert\Length(
@@ -34,7 +39,7 @@ class Contact
   private ?string $sujet = null;
 
   #[ORM\Column(type: Types::TEXT)]
-  #[Assert\NotBlank(message: 'Le contenu du message ne peut être vide')]
+  #[Assert\NotBlank(message: 'Le contenu du message ne peut pas être vide')]
   #[Assert\Length(
     min: 15,
     minMessage: 'Le message doit comporter au minimum {{ limit }} caractères',
@@ -81,6 +86,18 @@ class Contact
   public function setEmail(string $email): self
   {
     $this->email = $email;
+
+    return $this;
+  }
+
+  public function getPhone(): ?string
+  {
+    return $this->phone;
+  }
+
+  public function setPhone(?string $phone): self
+  {
+    $this->phone = $phone;
 
     return $this;
   }

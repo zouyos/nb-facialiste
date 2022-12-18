@@ -13,20 +13,20 @@
 
 	<div class="container-fluid mx-auto my-5 flex flex-wrap">
 		{% for massage in massages %}
-			<div class="card mx-5 my-3 rounded-5" style="width: 36rem;">
+			<div class="card mx-5 my-3 rounded-5 d-flex flex-column" style="width: 36rem; height: 46rem;">
 				{% if massage.photoName %}
 					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize600') }}" class="card-img-top w-100 rounded-5" alt="massage">
 				{% else %}
-					<img src="{{ asset('img/default.jpg') }}" class="card-img-top rounded-5" alt="massage">
+					<img src="{{ asset('img/default.jpg') | imagine_filter('resize600') }}" class="card-img-top rounded-5" alt="massage">
 				{% endif %}
 				<div class="card-body">
 					<h3 class="card-title text-center my-2">{{ massage.titre }}</h3>
 					<p class="fs-lg fst-italic text-center my-2">{{ massage.legende }}</p>
-					<div class="row justify-content-between mt-4 mb-2">
-						<p class="card-text col-8 fs-md">
-							{{ massage.descriptionCourte }}
+					<div class="row justify-content-around mt-4 mb-2">
+						<p class="card-text col-9 fs-md">
+							{{ massage.descriptionCourte|length > 125 ? massage.descriptionCourte|slice(0, 125) ~ '...' : massage.descriptionCourte }}
 						</p>
-						<p class="fs-lg card-text text-secondary col-4">
+						<p class="fs-md card-text text-secondary col-3">
 							Durée
 							{% if massage.duree|date('H') < 1 %}
 								{{ massage.duree|date('i') }}mn
@@ -35,9 +35,9 @@
 							{% endif %}
 						</p>
 					</div>
-					<div>
-						<a href="{{path('app_prestation', {'id':massage.id})}}" class="custom-btn primary mb-2">En savoir plus</a>
-					</div>
+				</div>
+				<div>
+					<a href="{{path('app_prestation', {'id':massage.id})}}" class="custom-btn primary ms-4 mb-4">En savoir plus</a>
 				</div>
 			</div>
 		{% endfor %}

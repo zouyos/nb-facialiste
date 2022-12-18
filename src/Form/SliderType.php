@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Slider;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class SliderType extends AbstractType
@@ -25,7 +27,12 @@ class SliderType extends AbstractType
       ->add('titre', TextType::class, [
         'required' => false,
       ])
-      ->add('ordre')
+      ->add('ordre', IntegerType::class, [
+        'required' => false,
+        'attr' => [
+          'type' => 'number',
+        ],
+      ])
       ->add('status', CheckboxType::class, [
         'required' => false,
         'label' => false,
@@ -44,7 +51,7 @@ class SliderType extends AbstractType
     $resolver->setDefaults([
       'data_class' => Slider::class,
       'status' => true,
-      // 'ordre' => '',
+      'ordre' => 1
     ]);
   }
 }

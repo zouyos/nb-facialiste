@@ -40,6 +40,10 @@ class Massage
 
   #[ORM\Column(length: 255)]
   #[Assert\NotBlank(message: 'Veuillez renseigner une courte description')]
+  #[Assert\Length(
+    max: 255,
+    maxMessage: 'La description courte ne peut pas excéder {{ limit }} caractères',
+  )]
   private ?string $descriptionCourte = null;
 
   #[ORM\Column(nullable: true)]

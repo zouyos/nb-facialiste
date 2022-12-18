@@ -84,25 +84,25 @@
 ---------------------------- */
 .secondary {
   color: #fff;
-  background-color: #435373;
+  background-color: #a65d82;
   border-color: #ccc;
 }
 
 .secondary:focus {
   color: #fff;
-  background-color: #2d3b58;
+  background-color: #8d476a;
   border-color: #8c8c8c;
 }
 
 .secondary:hover {
   color: #fff;
-  background-color: #2d3b58;
+  background-color: #8d476a;
   border-color: #adadad;
 }
 
 .secondary:active {
   color: #fff;
-  background-color: #2d3b58;
+  background-color: #8d476a;
   border-color: #adadad;
 }
 
@@ -110,25 +110,25 @@
 ---------------------------- */
 .cancel {
   color: #fff;
-  background-color: #ff6347;
+  background-color: salmon;
   border-color: #ccc;
 }
 
 .cancel:focus {
   color: #fff;
-  background-color: #cc4d37;
+  background-color: rgb(223, 97, 83);
   border-color: #8c8c8c;
 }
 
 .cancel:hover {
   color: #fff;
-  background-color: #cc4d37;
+  background-color: rgb(223, 97, 83);
   border-color: #adadad;
 }
 
 .cancel:active {
   color: #fff;
-  background-color: #cc4d37;
+  background-color: rgb(223, 97, 83);
   border-color: #adadad;
 }
 
@@ -142,7 +142,7 @@ body {
 
 main {
   flex: 1;
-  color: #2d3b58;
+  color: #364564;
   font-size: 1rem;
 }
 
@@ -232,11 +232,11 @@ footer a:active {
   width: 100%;
   height: 20rem;
   color: #fff;
-  text-shadow: -1px -1px 0 #2d3b58, 1px -1px 0 #2d3b58, -1px 1px 0 #2d3b58, 1px 1px 0 #2d3b58;
+  text-shadow: -1px -1px 0 #364564, 1px -1px 0 #364564, -1px 1px 0 #364564, 1px 1px 0 #364564;
 }
 
 .deco-outline {
-  color: #2d3b58;
+  color: #364564;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
@@ -259,7 +259,7 @@ nav {
 #heading {
   margin-top: 2rem;
   margin-bottom: 1.1rem;
-  color: #2d3b58;
+  color: #364564;
 }
 
 .line {
@@ -303,7 +303,7 @@ nav {
 
 #articles-home h2 {
   display: inline-block;
-  color: #2d3b58;
+  color: #364564;
   background-color: rgb(255, 255, 255);
 }
 
@@ -327,7 +327,7 @@ nav {
   border-radius: 1rem;
 }
 .custom-card a {
-  color: #2d3b58;
+  color: #364564;
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;

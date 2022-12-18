@@ -10,7 +10,7 @@
 
 {% block main %}
 	<div class="container my-5">
-		{{ form_start(form) }}
+		{{ form_start(form, {'attr': {'onsubmit': 'setFormSubmitting()'}}) }}
 		{{ form_row(form.ordre) }}
 		{{ form_row(form.imageFile) }}
 		{{ form_row(form.titre) }}
@@ -23,4 +23,7 @@
 			<a href="{{ path('app_slider_index') }}" class="custom-btn secondary">Retour à l'index</a>
 		</div>
 	</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{{asset('scripts/app.js')}}"></script>
 {% endblock %}
