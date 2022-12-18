@@ -384,6 +384,21 @@ nav {
   border: $primary-color 2px solid;
 }
 
+/* PRESTAS */
+
+.text-presta {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .text-presta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
 /* NEWS */
 
 #news {

@@ -13,7 +13,7 @@
 
 	<div class="container-fluid mx-auto my-5 flex flex-wrap">
 		{% for massage in massages %}
-			<div class="card mx-5 my-3 rounded-5 d-flex flex-column" style="width: 36rem; height: 46rem;">
+			<div class="card mx-5 my-3 rounded-5 d-flex flex-column" style="width: 36rem; height: 45rem;">
 				{% if massage.photoName %}
 					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize600') }}" class="card-img-top w-100 rounded-5" alt="massage">
 				{% else %}
@@ -22,7 +22,7 @@
 				<div class="card-body">
 					<h3 class="card-title text-center my-2">{{ massage.titre }}</h3>
 					<p class="fs-lg fst-italic text-center my-2">{{ massage.legende }}</p>
-					<div class="row justify-content-around mt-4 mb-2">
+					<div class="text-presta mt-4 mb-2">
 						<p class="card-text col-9 fs-md">
 							{{ massage.descriptionCourte|length > 125 ? massage.descriptionCourte|slice(0, 125) ~ '...' : massage.descriptionCourte }}
 						</p>
