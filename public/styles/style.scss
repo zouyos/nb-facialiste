@@ -111,6 +111,32 @@
   border-color: #adadad;
 }
 
+/* tertiary
+---------------------------- */
+.tertiary {
+  color: #fff;
+  background-color: $tertiary-color;
+  border-color: #ccc;
+}
+
+.tertiary:focus {
+  color: #fff;
+  background-color: $tertiary-color-darker;
+  border-color: #8c8c8c;
+}
+
+.tertiary:hover {
+  color: #fff;
+  background-color: $tertiary-color-darker;
+  border-color: #adadad;
+}
+
+.tertiary:active {
+  color: #fff;
+  background-color: $tertiary-color-darker;
+  border-color: #adadad;
+}
+
 /* cancel
 ---------------------------- */
 .cancel {

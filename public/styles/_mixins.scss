@@ -5,27 +5,3 @@
   margin: auto;
   border-radius: 90%;
 }
-
-@mixin btn-color($color, $color-darker) {
-  color: $bs-light;
-  background-color: $color;
-  border-color: #ccc;
-
-  :focus {
-    color: $bs-light;
-    background-color: $color-darker;
-    border-color: #8c8c8c;
-  }
-
-  :hover {
-    color: $bs-light;
-    background-color: $color-darker;
-    border-color: #adadad;
-  }
-
-  :active {
-    color: $bs-light;
-    background-color: $color-darker;
-    border-color: #adadad;
-  }
-}
