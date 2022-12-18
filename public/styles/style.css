@@ -363,16 +363,30 @@ nav {
 }
 
 /* PRESTAS */
-.text-presta {
+.text-prestas {
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .text-prestas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.text-presta {
+  display: flex;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 800px) {
   .text-presta {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
   }
 }
 /* NEWS */

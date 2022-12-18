@@ -13,7 +13,7 @@
 
 	<section id="accueil" class="container-fluid mx-auto accueil flew-wrap mx-5 my-4 px-5 py-2 text-center">
 
-		<div class="col-6 container-fluid text-center">
+		<div class="col-6 container-fluid text-center px-3">
 			<h2 class="my-3 script display-4">Sublimez votre visage</h2>
 			<p class="lh-lg fs-md fst-italic">Bienvenue dans mon univers, un lieu différent et confidentiel qui revisite les codes des lieux de bien-être. J’ai à cœur d’y prodiguer des massages délicats qui vous transporteront dans une parenthèse exquise.</p>
 			<h3 class="my-3 fs-3">Qu'est-ce qu'une facialiste ?</h3>
@@ -21,7 +21,7 @@
 		</div>
 
 		{% if slides %}
-			<div id="carousel1" class="col-6 mx-auto carousel slide carousel-fade" data-bs-ride="carousel">
+			<div id="carousel1" class="col-5 mx-auto carousel slide carousel-fade" data-bs-ride="carousel">
 				<div class="carousel-inner">
 					{% for k, slide in slides %}
 						{% if k == 0 %}

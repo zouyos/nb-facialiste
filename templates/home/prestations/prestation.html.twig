@@ -13,10 +13,10 @@
 {% block main %}
 
 	<div class="container mx-auto m-5">
-		<div class="border border-3 rounded-5 py-5 m-5 row justify-content-around align-items-center">
+		<div class="border border-3 rounded-5 py-4 m-3 text-presta">
 			<div class="col-5">
 				{% if massage.photoName %}
-					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize800') }}" alt="Massage: {{massage.titre}}" class="img-fluid w-100 rounded-5">
+					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize800') }}" alt="Massage: {{massage.titre}}" class="img-fluid w-100 rounded-5 my-1">
 				{% else %}
 					<img src="{{asset('img/default.jpg')}}" alt="Massage" class="img-fluid w-100 rounded-5">
 				{% endif %}
@@ -25,7 +25,7 @@
 				<h2>{{ massage.titre }}
 					<span class="fst-italic">{{ massage.legende ? ' ~ ' ~ massage.legende : ''}}</span>
 				</h2>
-				<p class="my-4 fs-md text-secondary">Durée
+				<p class="my-4 fs-lg text-secondary">Durée
 					{% if massage.duree|date('H') < 1 %}
 						{{ massage.duree|date('i') }}mn
 					{% else %}
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div class="mx-4">
-			<a href="{{path('app_prestations')}}" class="custom-btn secondary mx-5 my-1">Tous les massages</a>
+			<a href="{{path('app_prestations')}}" class="custom-btn secondary mx-3 my-2">Tous les massages</a>
 		</div>
 	</div>
 {% endblock %}
