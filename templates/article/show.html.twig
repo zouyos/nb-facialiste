@@ -29,9 +29,11 @@
 			{{ article.modifiedAt ? '- Modifié le ' ~ article.modifiedAt|date('d/m/Y') : '' }}
 		</p>
 		<div class="d-flex my-4">
-			<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="me-2 custom-btn primary">Modifier</a>
-			{{ include('article/_delete_form.html.twig') }}
-			<a href="{{ path('app_article_index') }}" class="custom-btn secondary ms-2">Retour à l'index</a>
+			<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="me-1 custom-btn primary">Modifier</a>
+			<div class="me-2">
+				{{ include('article/_delete_form.html.twig') }}
+			</div>
+			<a href="{{ path('app_article_index') }}" class="custom-btn secondary">Retour à l'index</a>
 		</div>
 	</div>
 
