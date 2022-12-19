@@ -22,19 +22,19 @@
 		<table class="table">
 			<thead>
 				<tr valign="middle">
-					<th>Titre</th>
-					<th>Catégorie</th>
-					<th>Image</th>
-					<th>Aperçu du contenu</th>
-					<th>Date de création</th>
-					<th>Date de modification</th>
-					<th></th>
+					<th scope="col">Titre</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col">Image</th>
+					<th scope="col">Aperçu du contenu</th>
+					<th scope="col">Date de création</th>
+					<th scope="col">Date de modification</th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for article in articles %}
 					<tr valign="middle">
-						<td>
+						<td scope="row">
 							{{ article.titre }}
 						</td>
 						{% if article.categorie %}
