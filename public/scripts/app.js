@@ -7,7 +7,7 @@ window.addEventListener("beforeunload", function (e) {
   if (formSubmitting) {
     return undefined;
   }
-  var confirmationMessage =
+  let confirmationMessage =
     "Il existe des changements non enregistrés." +
     "Si vous quittez la page ces données seront perdues.";
 

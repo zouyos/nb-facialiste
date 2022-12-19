@@ -23,8 +23,10 @@
 		<div class="d-flex align-items-center my-3">
 			<button class="custom-btn primary me-2">Mettre à jour</button>
 			{{ form_end(form) }}
-			{{ include('user/_delete_form.html.twig') }}
-			<a href="{{ path('app_user_index') }}" class="custom-btn secondary ms-2">Retour à l'index</a>
+			<div class="me-2">
+				{{ include('user/_delete_form.html.twig') }}
+			</div>
+			<a href="{{ path('app_user_index') }}" class="custom-btn secondary">Retour à l'index</a>
 		</div>
 	</div>
 {% endblock %}

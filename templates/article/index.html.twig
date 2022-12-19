@@ -15,26 +15,26 @@
 	<div class="container-fluid my-5 mx-auto">
 
 		<div class="my-3 d-flex justify-content-end align-items-center flex-wrap">
-			<a href="{{ path('app_article_new') }}" class="custom-btn primary me-2">Créer un article</a>
-			<a href="{{ path('app_categorie_index') }}" class="custom-btn secondary">Gérer les catégories</a>
+			<a href="{{ path('app_article_new') }}" class="custom-btn primary">Créer un article</a>
+			<a href="{{ path('app_categorie_index') }}" class="custom-btn secondary ms-2">Gérer les catégories</a>
 		</div>
 
 		<table class="table">
 			<thead>
 				<tr valign="middle">
-					<th scope="col">Titre</th>
-					<th scope="col">Catégorie</th>
-					<th scope="col">Image</th>
-					<th scope="col">Aperçu du contenu</th>
-					<th scope="col">Date de création</th>
-					<th scope="col">Date de modification</th>
-					<th scope="col"></th>
+					<th>Titre</th>
+					<th>Catégorie</th>
+					<th>Image</th>
+					<th>Aperçu du contenu</th>
+					<th>Date de création</th>
+					<th>Date de modification</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for article in articles %}
 					<tr valign="middle">
-						<td scope="row">
+						<td>
 							{{ article.titre }}
 						</td>
 						{% if article.categorie %}
