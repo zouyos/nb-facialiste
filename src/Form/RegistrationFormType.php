@@ -61,7 +61,7 @@ class RegistrationFormType extends AbstractType
           //     'message' => 'Votre mot de passe doit contenir au minimum : 
           //     8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
           //   ]),
-          // ],
+          ],
           'help' => 'Votre mot de passe doit contenir au minimum : 
           8 caractères, une lettre en majuscule, une en miniscule et un chiffre.'
         ]);
