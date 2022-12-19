@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -54,11 +55,11 @@ class RegistrationFormType extends AbstractType
             new NotBlank([
               'message' => 'Vous devez renseigner un mot de passe',
             ]),
-            new Length([
-              'min' => 6,
-              'minMessage' => 'Votre mot de passe doit contenir au minimum {{ limit }} caractères.',
-              // max length allowed by Symfony for security reasons
-              'max' => 4096,
+            new Regex([
+              'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
+              'match' => true,
+              'message' => 'Votre mot de passe doit contenir au minimum : 
+              8 caractères, une lettre en majuscules, une en miniscule et un chiffre.',
             ]),
           ],
         ]);
