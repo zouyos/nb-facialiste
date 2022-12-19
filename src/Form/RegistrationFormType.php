@@ -55,12 +55,12 @@ class RegistrationFormType extends AbstractType
             new NotBlank([
               'message' => 'Vous devez renseigner un mot de passe',
             ]),
-          //   new Regex([
-          //     'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
-          //     'match' => true,
-          //     'message' => 'Votre mot de passe doit contenir au minimum : 
-          //     8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
-          //   ]),
+            new Regex([
+              'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
+              'match' => true,
+              'message' => 'Votre mot de passe doit contenir au minimum : 
+              8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
+            ]),
           ],
           'help' => 'Votre mot de passe doit contenir au minimum : 
           8 caractères, une lettre en majuscule, une en miniscule et un chiffre.'
