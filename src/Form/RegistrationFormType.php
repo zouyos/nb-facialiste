@@ -63,7 +63,7 @@ class RegistrationFormType extends AbstractType
             ]),
           ],
           'help' => 'Votre mot de passe doit contenir au minimum : 
-          8 caractères, une lettre en majuscule, une en miniscule et un chiffre.'
+          8 caractères, une lettre en majuscule, une lettre en miniscule et un chiffre.'
         ]);
     }
 
