@@ -36,7 +36,6 @@ class Massage
 
   #[ORM\Column(type: Types::TIME_MUTABLE)]
   #[Assert\NotNull(message: 'Veuillez choisir une durée valide')]
-  #[Assert\Positive(message: 'Veuillez choisir une durée')]
   private ?\DateTimeInterface $duree = null;
 
   #[ORM\Column(length: 255)]
