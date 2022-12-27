@@ -41,9 +41,9 @@
 						{% else %}
 							<td class="fst-italic fs-sm">Aucune image pour cette prestation</td>
 						{% endif %}
-						<td class="text-center">{{ massage.descriptionCourte }}</td>
+						<td class="text-center">{{ massage.descriptionCourte|length > 55 ? massage.descriptionCourte|slice(0, 55) ~ '...' : massage.descriptionCourte }}</td>
 						{% if massage.descriptionLongue %}
-							<td class="text-center">{{ massage.descriptionLongue|length > 50 ? massage.descriptionLongue|slice(0, 50) ~ '...' : massage.descriptionLongue }}</td>
+							<td class="text-center">{{ massage.descriptionLongue|length > 75 ? massage.descriptionLongue|slice(0, 75) ~ '...' : massage.descriptionLongue }}</td>
 						{% else %}
 							<td class="fs-sm fst-italic">Cette prestation n'a pas de description longue</td>
 						{% endif %}
