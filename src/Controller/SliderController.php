@@ -25,6 +25,7 @@ class SliderController extends AbstractController
   public function new(Request $request, SliderRepository $sliderRepository): Response
   {
     $slider = new Slider();
+    $slider->setOrdre(count($sliderRepository->findAll()) + 1);
     $form = $this->createForm(SliderType::class, $slider);
     $form->handleRequest($request);
 

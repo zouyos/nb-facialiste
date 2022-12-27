@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Slider;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -51,7 +50,6 @@ class SliderType extends AbstractType
     $resolver->setDefaults([
       'data_class' => Slider::class,
       'status' => true,
-      'ordre' => 1
     ]);
   }
 }
