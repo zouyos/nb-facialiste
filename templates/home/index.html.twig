@@ -13,7 +13,7 @@
 
 	<section id="accueil" class="container-fluid mx-auto accueil flew-wrap mx-5 my-4 px-5 py-2 text-center">
 
-		<div class="col-6 container-fluid text-center px-3">
+		<div class="container-fluid text-center px-3">
 			<h2 class="my-3 script display-4">Sublimez votre visage</h2>
 			<p class="lh-lg fs-md fst-italic">Bienvenue dans mon univers, un lieu différent et confidentiel qui revisite les codes des lieux de bien-être. J’ai à cœur d’y prodiguer des massages délicats qui vous transporteront dans une parenthèse exquise.</p>
 			<h3 class="my-3 fs-3">Qu'est-ce qu'une facialiste ?</h3>
@@ -21,7 +21,7 @@
 		</div>
 
 		{% if slides %}
-			<div id="carousel1" class="col-5 mx-auto carousel slide carousel-fade" data-bs-ride="carousel">
+			<div id="carousel1" class="mx-auto carousel container slide carousel-fade" data-bs-ride="carousel">
 				<div class="carousel-inner">
 					{% for k, slide in slides %}
 						{% if k == 0 %}
@@ -50,7 +50,7 @@
 
 	<section id="produits" class="container-fluid mx-auto accueil flew-wrap mx-5 my-4 px-5 py-2 text-center">
 
-		<div id="carousel2" class="col-5 mx-auto carousel slide carousel-fade" data-bs-ride="carousel">
+		<div id="carousel2" class="mx-auto carousel container slide carousel-fade" data-bs-ride="carousel">
 			<div class="carousel-inner rounded-5">
 				<div class="carousel-item active">
 					<img src="{{asset('img/slider09.jpeg') | imagine_filter('resize800')}}" class="d-block w-100" alt="Huiles de massage">
@@ -72,7 +72,7 @@
 			</button>
 		</div>
 
-		<div class="col-6 container-fluid text-center px-3">
+		<div class="container-fluid text-center px-3">
 			<h2 class="my-3 script display-4">Produits & Accessoires</h2>
 			<h3 class="my-4 fs-3">Un choix guidé par mes convictions :</h3>
 			<p class="lh-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, amet quia quaerat, accusantium vero aperiam voluptates, nisi explicabo nesciunt dignissimos voluptatem ullam! Minus deserunt reiciendis provident asperiores cupiditate nulla veniam officia similique? Placeat nam laborum, sequi quisquam dicta autem praesentium aliquam incidunt dolores id soluta veritatis dolorem voluptatibus sint voluptatem ratione, unde porro vitae inventore? Perspiciatis neque, quas eveniet obcaecati commodi eligendi culpa possimus et deserunt. Dolore accusantium nisi impedit? Eaque architecto dignissimos mollitia omnis recusandae numquam nihil. Reprehenderit repudiandae, dolores excepturi tenetur reiciendis debitis, voluptates autem cum et dolorum velit, iste non fugiat rem consectetur eveniet necessitatibus fuga! Provident!</p>
@@ -116,7 +116,7 @@
 			<div class="line text-center mb-3"></div>
 		</div>
 		<div class="flex flex-wrap my-3">
-			<div class="col-5 fs-5 p-4 mx-5 text-center d-flex flex-column justify-content-around align-items-center">
+			<div class="fs-5 p-4 mx-5 text-center d-flex flex-column justify-content-around align-items-center">
 				<p class="my-3 h3 fw-bold">Nadège Becquet</p>
 				<p class="my-3 fw-bold">160 Rue Grande, 77300 Fontainebleau</p>
 				<p class="my-3 fw-bold">Tel : 06 83 49 30 34</p>
@@ -131,14 +131,14 @@
 					<a href="{{path('app_contact')}}" class="custom-btn primary fw-bold fs-lg">Contact</a>
 				</p>
 			</div>
-			<div class="flex col-5 mx-5">
+			<div class="flex mx-5">
 				<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2648.490578896425!2d2.7021185159465877!3d48.408725340215334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5f461b98dac79%3A0xeb72a057c8dcecd2!2s160%20Rue%20Grande%2C%2077300%20Fontainebleau!5e0!3m2!1sen!2sfr!4v1667912148327!5m2!1sen!2sfr" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
 		</div>
 	</section>
 
 	<div class="divider my-5 mx-auto"></div>
-  
+
 	<section>
 		<h2 class="h1 text-center mt-5">Avis</h2>
 		<div class="line text-center"></div>
