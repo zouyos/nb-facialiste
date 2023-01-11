@@ -12,16 +12,16 @@
 
 {% block main %}
 
-	<div class="container mx-auto m-5">
-		<div class="border border-3 rounded-5 py-4 m-3 text-presta">
-			<div class="col-5">
+	<div class="container mx-auto m-4">
+		<div class="border border-3 rounded-5 py-4 m-3 d-flex text-presta">
+			<div class="col mx-4 mb-4">
 				{% if massage.photoName %}
 					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize800') }}" alt="Massage: {{massage.titre}}" class="img-fluid w-100 rounded-5 my-1">
 				{% else %}
 					<img src="{{asset('img/default.jpg')}}" alt="Massage" class="img-fluid w-100 rounded-5">
 				{% endif %}
 			</div>
-			<div class="col-5">
+			<div class="col mx-4 d-flex flex-column justify-content-center">
 				<h2>{{ massage.titre }}
 					<span class="fst-italic">{{ massage.legende ? ' ~ ' ~ massage.legende : ''}}</span>
 				</h2>
