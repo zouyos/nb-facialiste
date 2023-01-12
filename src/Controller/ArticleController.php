@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('admin/articles')]
 class ArticleController extends AbstractController
@@ -51,17 +52,21 @@ class ArticleController extends AbstractController
   }
 
   #[Route('/modifier/{id}', name: 'app_article_edit', methods: ['GET', 'POST'])]
-  public function edit(Request $request, Article $article, ArticleRepository $articleRepository): Response
+  public function edit(Request $request, Article $article, EntityManagerInterface $entityManager): Response
   {
     $form = $this->createForm(ArticleType::class, $article);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+
       $article->setModifiedAt(new \DateTimeImmutable('now'));
-      $articleRepository->save($article, true);
+
+      $entityManager->persist($article);
+      $entityManager->flush();
 
       $this->addFlash('success', 'L\'article a bien été modifié');
-      return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
+
+      return $this->redirectToRoute('app_article_index', []);
     }
 
     return $this->renderForm('article/edit.html.twig', [
