@@ -136,7 +136,6 @@ class ProfilController extends AbstractController
   #[Route('/rendez-vous', name: 'app_rendez_vous', methods: ['GET'])]
   public function rendezvous(): Response
   {
-    $this->addFlash('warning', 'Partie en construction');
     return $this->render('profil/rendez-vous.html.twig');
   }
 }

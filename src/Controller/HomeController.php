@@ -26,8 +26,6 @@ class HomeController extends AbstractController
     $slides = $sliderRepository->findBy(['status' => true], ['ordre' => 'ASC']);
     $articles = $articleRepository->findBy([], ['createdAt' => 'DESC'], 3);
 
-    $this->addFlash('warning', 'Site en construction');
-
     return $this->render('home/index.html.twig', [
       'slides' => $slides,
       'articles' => $articles,
