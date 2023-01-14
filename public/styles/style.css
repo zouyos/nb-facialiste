@@ -374,6 +374,13 @@ nav {
 }
 
 /* CONTACT */
+@media screen and (min-width: 1200px) {
+  #contact-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
 .green-link a {
   text-decoration: none;
   color: #5a8357;
