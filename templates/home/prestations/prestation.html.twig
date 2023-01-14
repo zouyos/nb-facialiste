@@ -14,7 +14,7 @@
 
 	<div class="container mx-auto m-4">
 		<div class="border border-3 rounded-5 py-4 m-3 d-flex text-presta">
-			<div class="col mx-4 mb-4">
+			<div class="col mx-4 mb-2">
 				{% if massage.photoName %}
 					<img src="{{ vich_uploader_asset(massage, 'photoFile') | imagine_filter('resize800') }}" alt="Massage: {{massage.titre}}" class="img-fluid w-100 rounded-5 my-1">
 				{% else %}
@@ -25,18 +25,18 @@
 				<h2>{{ massage.titre }}
 					<span class="fst-italic">{{ massage.legende ? ' ~ ' ~ massage.legende : ''}}</span>
 				</h2>
-				<p class="my-4 fs-lg text-secondary">Durée
+				<p class="my-2 fs-lg text-secondary">Durée
 					{% if massage.duree|date('H') < 1 %}
 						{{ massage.duree|date('i') }}mn
 					{% else %}
 						{{ massage.duree|date('H') ~ 'h' ~ massage.duree|date('i') }}
 					{% endif %}
 				</p>
-				<p class="text-justify fs-md lh-lg">
+				<p class="text-justify fs-md">
 					{{massage.descriptionLongue|nl2br}}
 				</p>
-				<p class="mt-4 mb-2 fst-italic">
-					Pour l'instant, pour toute prise de rendez-vous :
+				<p class="my-2 fst-italic">
+					Pour le moment, veuillez me contacter pour réserver un rendez-vous :
 				</p>
 				<div class="d-flex">
 					<a href="{{path('app_contact')}}" class="custom-btn primary fw-bold m-1">Contactez-moi</a>
