@@ -40,7 +40,7 @@
 						<td>{{ slider.createdAt ? slider.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ slider.modifiedAt ? slider.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
-							<div class="flex justify-content-end">
+							<div class="flex">
 								<a href="{{ path('app_slider_edit', {'id': slider.id}) }}" class="custom-btn secondary">Modifier</a>
 							</div>
 						</td>

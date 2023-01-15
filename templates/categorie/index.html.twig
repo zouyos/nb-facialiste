@@ -35,7 +35,7 @@
 						<td>{{ categorie.createdAt ? categorie.createdAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>{{ categorie.modifiedAt ? categorie.modifiedAt|date('d/m/Y à H:i') : '' }}</td>
 						<td>
-							<div class="flex justify-content-end">
+							<div class="flex">
 								<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="custom-btn secondary">Modifier</a>
 							</div>
 						</td>

@@ -30,11 +30,14 @@ class ArticleController extends AbstractController
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+
       $article->setCreatedAt(new \DateTimeImmutable('now'));
+
       $articleRepository->save($article, true);
 
       $this->addFlash('success', 'L\'article a bien été ajouté');
-      return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
+
+      return $this->redirectToRoute('app_article_index');
     }
 
     return $this->renderForm('article/new.html.twig', [
@@ -52,7 +55,7 @@ class ArticleController extends AbstractController
   }
 
   #[Route('/modifier/{id}', name: 'app_article_edit', methods: ['GET', 'POST'])]
-  public function edit(Request $request, Article $article, EntityManagerInterface $entityManager): Response
+  public function edit(Request $request, Article $article, ArticleRepository $articleRepository): Response
   {
     $form = $this->createForm(ArticleType::class, $article);
     $form->handleRequest($request);
@@ -61,8 +64,7 @@ class ArticleController extends AbstractController
 
       $article->setModifiedAt(new \DateTimeImmutable('now'));
 
-      $entityManager->persist($article);
-      $entityManager->flush();
+      $articleRepository->save($article, true);
 
       $this->addFlash('success', 'L\'article a bien été modifié');
 
