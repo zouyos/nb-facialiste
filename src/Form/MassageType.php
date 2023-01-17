@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MassageType extends AbstractType
 {
-
   public function minutes()
   {
     $minutes = [];
