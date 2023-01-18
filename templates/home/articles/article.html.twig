@@ -2,7 +2,8 @@
 
 {% block title %}
 	{{ parent() }}
-	| {{article.titre}}
+	|
+	{{article.titre}}
 {% endblock %}
 
 {% block heading %}
@@ -14,10 +15,10 @@
 	<article class="container mb-3">
 		{% if article.imageName %}
 			<div class="flex my-3">
-				<img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('resize800') }}" alt="{{article.titre}}" class="rounded-3">
+				<img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('resize800') }}" alt="{{article.titre}}" class="rounded-3 w-100 m-1">
 			</div>
 		{% endif %}
-		<p class="text-justify my-4">{{ article.content|raw|nl2br }}</p>
+		<p class="text-justify my-4 mx-1">{{ article.content|raw|nl2br }}</p>
 		<p class="fs-sm fst-italic">
 			Article publié le
 			{{ article.createdAt|date('d/m/Y') }}
