@@ -338,18 +338,16 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 24rem;
-  height: 36rem;
+  width: 22rem;
+  height: 34rem;
   color: #000;
   background-color: rgba(255, 255, 255, 0.85);
-  padding: 2rem;
+  padding: 0 2rem;
   border-radius: 1rem;
   cursor: pointer;
   transition: all 0.2s;
 }
 .custom-card img {
-  width: 20rem;
-  height: 15rem;
   border-radius: 1rem;
 }
 .custom-card a {
@@ -374,7 +372,7 @@ nav {
 }
 
 /* CONTACT */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1080px) {
   #contact-row {
     display: flex;
     justify-content: space-around;

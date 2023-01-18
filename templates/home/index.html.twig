@@ -83,29 +83,31 @@
 		</div>
 	</section>
 
-	<section id="articles-home" class="mt-5 px-5 pt-3 pb-5 flex-col flex-wrap">
+	<section id="articles-home" class="mt-5 px-5 pt-3 pb-5">
 
 		<div class="flex">
-			<h2 class="mt-5 mb-4 text-center display-3 py-3 px-5 script rounded-pill">Évèvenementiel / Articles à la une</h2>
+			<h2 class="mt-5 mb-4 text-center display-3 py-3 px-5 script rounded-5">Évèvenementiel / Articles à la une</h2>
 		</div>
 
 		<div class="container-fluid mx-auto flex flex-wrap p-3">
 
 			{% for article in articles %}
-				<div class="custom-card m-5" onclick="window.location='{{path('app_article', {'id':article.id})}}';">
+				<div class="custom-card m-4" onclick="window.location='{{path('app_article', {'id':article.id})}}';">
+					{% if article.categorie %}
+						<div class="card-header p-3 fw-bold">{{ article.categorie.titre }}</div>
+					{% else %}
+						<div class="card-header p-3 fw-bold">Article</div>
+					{% endif %}
 					<div>
 						{% if article.imageName %}
-							<img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('thumb400') }}" alt="{{ article.titre }}">
+							<img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('thumb400') }}" class="card-img-top h-100" alt="{{ article.titre }}">
 						{% endif %}
 					</div>
-					<div class="w-100 h-100 px-2">
-						<h3 class="h5 fw-bolder my-3 text-center fs-sm fw-bold">{{ article.titre|length > 75 ? article.titre|slice(0, 75) ~ '...' : article.titre }}</h3>
-						{% if article.categorie %}
-							<p class="fs-sm my-2">[{{ article.categorie.titre }}]</p>
-						{% endif %}
-						<p class="fs-sm fst-italic my-2">{{ article.createdAt|date('d/m/Y') }}</p>
+					<div class="h-100 px-2">
+						<h3 class="h5 fw-bolder mt-4 mb-3 fs-sm fw-bold">{{ article.titre|length > 46 ? article.titre|slice(0, 46) ~ '...' : article.titre }}</h3>
 						<p class="text-justify my-2">{{ article.content|length > 125 ? article.content|slice(0, 125) ~ '...' : article.content }}</p>
 					</div>
+					<div class="card-footer pb-4 fs-sm text-muted fw-bold">{{ article.createdAt|date('d/m/Y') }}</div>
 				</div>
 			{% endfor %}
 		</div>
