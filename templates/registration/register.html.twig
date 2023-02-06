@@ -33,8 +33,8 @@
 			{{ form_row(registrationForm.email) }}
 			<div class="my-3">
 				{{ form_label(registrationForm.plainPassword, 'Mot de passe') }}
-				<small class="text-muted">{{ form_help(registrationForm.plainPassword) }}</small>
 				{{ form_widget(registrationForm.plainPassword) }}
+				{{ form_help(registrationForm.plainPassword, {'attr': {'class': 'text-muted mb-2'}}) }}
 				{{ form_errors(registrationForm.plainPassword) }}
 			</div>
 			{{ form_row(registrationForm.agreeTerms, { label: 'J\'ai pris connaissance des conditions ci-après et les accepte.'}) }}
