@@ -19,7 +19,11 @@
 		{{ form_row(form.nom) }}
 		{{ form_row(form.prenom, { label: 'Prénom'}) }}
 		{{ form_row(form.email) }}
-		{{ form_row(form.plainPassword, { label: 'Saisir votre mot de passe pour confirmer la modification', label_attr: {'class': 'fs-sm text-secondary fst-italic'} }) }}
+		<div class="mb-3">
+			{{form_label(form.plainPassword, 'Saisir votre mot de passe pour confirmer la modification', {'label_attr': {'class': 'fs-sm text-secondary fst-italic'}}) }}
+			{{form_errors(form.plainPassword)}}
+			{{form_widget(form.plainPassword)}}
+		</div>
 		<button class="custom-btn primary me-1" type="submit">{{button_label|default('Mettre à jour')}}</button>
 		<a href="{{path('app_profil')}}" class="custom-btn tertiary">Retour au profil</a>
 		<div class="my-2">

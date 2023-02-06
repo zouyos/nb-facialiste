@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -15,8 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -55,12 +56,12 @@ class RegistrationFormType extends AbstractType
             new NotBlank([
               'message' => 'Vous devez renseigner un mot de passe',
             ]),
-            new Regex([
-              'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
-              'match' => true,
-              'message' => 'Votre mot de passe doit contenir au minimum : 
-              8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
-            ]),
+            // new Regex([
+            //   'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
+            //   'match' => true,
+            //   'message' => 'Votre mot de passe doit contenir au minimum : 
+            //   8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
+            // ]),
           ],
           'help' => 'Votre mot de passe doit contenir au minimum : 
           8 caractères, une lettre en majuscule, une lettre en miniscule et un chiffre.'
@@ -69,31 +70,70 @@ class RegistrationFormType extends AbstractType
 
     if ($options['updatePassword']) {
       $builder
-        ->add('newPassword', PasswordType::class, [
-          'mapped' => false,
-          'required' => false,
-          'label' => 'Nouveau mot de passe',
-          'constraints' => [
-            new Length([
-              'min' => 6,
-              'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
-              'max' => 4096,
-            ]),
+        ->add('updatePassword', RepeatedType::class, [
+          'type' => PasswordType::class,
+          'first_options'  => [
+            'mapped' => false,
+            'required' => false,
+            'label' => 'Nouveau mot de passe',
+            'constraints' => [
+              new NotBlank([
+                'message' => 'Vous devez renseigner un nouveau mot de passe',
+              ]),
+              new Length([
+                'min' => 8,
+                'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
+                'max' => 4096,
+              ]),
+              new Regex([
+                'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
+                'match' => true,
+                'message' => 'Votre nouveau mot de passe n\'est pas valide',
+              ]),
+            ],
+            'help' => 'Votre mot de passe doit contenir au minimum : 
+            8 caractères, une lettre en majuscule, une lettre en miniscule et un chiffre.',
           ],
-        ])
-        ->add('confirmedPassword', PasswordType::class, [
-          'mapped' => false,
-          'required' => false,
-          'label' => 'Confirmer nouveau mot de passe',
-          'constraints' => [
-            new Length([
-              'min' => 6,
-              'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
-              'max' => 4096,
-            ]),
+          'second_options' => [
+            'mapped' => false,
+            'required' => false,
+            'label' => 'Confirmer nouveau mot de passe',
           ],
         ]);
     }
+    //     ->add('newPassword', PasswordType::class, [
+    //       'mapped' => false,
+    //       'required' => false,
+    //       'label' => 'Nouveau mot de passe',
+    //       'constraints' => [
+    //         new Length([
+    //           'min' => 6,
+    //           'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
+    //           'max' => 4096,
+    //         ]),
+    //         new Regex([
+    //           'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
+    //           'match' => true,
+    //           'message' => 'Votre mot de passe doit contenir au minimum : 
+    //           8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
+    //         ]),
+    //       ],
+    //       'help' => 'Votre mot de passe doit contenir au minimum : 
+    //       8 caractères, une lettre en majuscule, une lettre en miniscule et un chiffre.',
+    //     ])
+    //     ->add('confirmPassword', PasswordType::class, [
+    //       'mapped' => false,
+    //       'required' => false,
+    //       'label' => 'Confirmer nouveau mot de passe',
+    //       'constraints' => [
+    //         new Length([
+    //           'min' => 6,
+    //           'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
+    //           'max' => 4096,
+    //         ]),
+    //       ],
+    //     ]);
+    // }
 
     if ($options['nom']) {
       $builder

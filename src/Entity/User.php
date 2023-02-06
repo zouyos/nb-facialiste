@@ -61,6 +61,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
   private ?string $plainPassword = null;
 
+  private ?string $updatePassword = null;
+
   public function getId(): ?int
   {
     return $this->id;
@@ -199,6 +201,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   public function setPlainPassword(?string $plainPassword): self
   {
     $this->plainPassword = $plainPassword;
+
+    return $this;
+  }
+
+  public function getUpdatePassword(): ?string
+  {
+    return $this->updatePassword;
+  }
+
+  public function setUpdatePassword(?string $updatePassword): self
+  {
+    $this->updatePassword = $updatePassword;
 
     return $this;
   }

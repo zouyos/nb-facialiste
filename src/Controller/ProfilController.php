@@ -69,42 +69,24 @@ class ProfilController extends AbstractController
 
     if ($form->isSubmitted() && $form->isValid()) {
 
-      $currentPassword = $form->get('plainPassword')->getData();
-      $confirmPassword = $form->get('confirmedPassword')->getData();
-      $newPassword = $form->get('newPassword')->getData();
+      $plainPassword = $form->get('plainPassword')->getData();
+      $updatePassword = $form->get('updatePassword')->getData();
 
       $access = true;
 
-      if (!$currentPassword) {
+      if (!$passwordHasher->isPasswordValid($user, $plainPassword)) {
         $access = false;
-        $form->get('currentPassword')->addError(new FormError('Veuillez saisir votre mot de passe actuel'));
+        $form->get('plainPassword')->addError(new FormError('Le mot de passe saisi est incorrect'));
       } else {
-        if (!$passwordHasher->isPasswordValid($user, $currentPassword)) {
+        if ($plainPassword === $updatePassword) {
           $access = false;
-          $form->get('currentPassword')->addError(new FormError('Le mot de passe est incorrect'));
-        } else {
-          if ($newPassword != $confirmPassword) {
-            $access = false;
-            $form->get('newPassword')->addError(new FormError('Les mots de passe ne corresspondent pas'));
-            $form->get('confirmedPassword')->addError(new FormError('Les mots de passe ne corresspondent pas'));
-          } else {
-            if (!$newPassword) // si confirm est vide ça va empêcher d'envoyer un mdp vide en bdd
-            {
-              $access = false;
-              $form->get('newPassword')->addError(new FormError('Veuillez saisir un nouveau mot de passe'));
-            } else {
-              if ($newPassword === $currentPassword) {
-                $access = false;
-                $form->get('newPassword')->addError(new FormError('Veuillez saisir un mot de passe différent de votre mot de passe actuel'));
-              }
-            }
-          }
+          $form->get('updatePassword')->addError(new FormError('Veuillez saisir un mot de passe différent de votre mot de passe actuel'));
         }
       }
 
       if ($access) {
         $user->setPassword(
-          $passwordHasher->hashPassword($user, $newPassword)
+          $passwordHasher->hashPassword($user, $updatePassword)
         );
 
         $entityManager->persist($user);
@@ -117,12 +99,12 @@ class ProfilController extends AbstractController
           ->htmlTemplate('email/reset.html.twig')
           ->context([
             'user' => $user,
-            'newPassword' => $form->get('newPassword')->getData(),
+            'updatePassword' => $form->get('updatePassword')->getData(),
           ]);
 
         $mailer->send($email);
 
-        $this->addFlash('success', 'Votre mot de passe a bien été modifié. Un mail de confirmation vous a été envoyé à l\'adresse : ' . $user->getEmail());
+        $this->addFlash('success', 'Votre mot de passe a bien été modifié. Un mail de confirmation vous a été envoyé à l\'adresse suivante : ' . $user->getEmail());
 
         return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
       }
