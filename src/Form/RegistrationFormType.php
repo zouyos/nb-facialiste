@@ -72,8 +72,8 @@ class RegistrationFormType extends AbstractType
       $builder
         ->add('updatePassword', RepeatedType::class, [
           'type' => PasswordType::class,
+          'mapped' => false,
           'first_options'  => [
-            'mapped' => false,
             'required' => false,
             'label' => 'Nouveau mot de passe',
             'constraints' => [
@@ -95,45 +95,11 @@ class RegistrationFormType extends AbstractType
             8 caractères, une lettre en majuscule, une lettre en miniscule et un chiffre.',
           ],
           'second_options' => [
-            'mapped' => false,
             'required' => false,
             'label' => 'Confirmer nouveau mot de passe',
           ],
         ]);
     }
-    //     ->add('newPassword', PasswordType::class, [
-    //       'mapped' => false,
-    //       'required' => false,
-    //       'label' => 'Nouveau mot de passe',
-    //       'constraints' => [
-    //         new Length([
-    //           'min' => 6,
-    //           'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
-    //           'max' => 4096,
-    //         ]),
-    //         new Regex([
-    //           'pattern' => '~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$~',
-    //           'match' => true,
-    //           'message' => 'Votre mot de passe doit contenir au minimum : 
-    //           8 caractères, une lettre en majuscule, une en miniscule et un chiffre.',
-    //         ]),
-    //       ],
-    //       'help' => 'Votre mot de passe doit contenir au minimum : 
-    //       8 caractères, une lettre en majuscule, une lettre en miniscule et un chiffre.',
-    //     ])
-    //     ->add('confirmPassword', PasswordType::class, [
-    //       'mapped' => false,
-    //       'required' => false,
-    //       'label' => 'Confirmer nouveau mot de passe',
-    //       'constraints' => [
-    //         new Length([
-    //           'min' => 6,
-    //           'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères.',
-    //           'max' => 4096,
-    //         ]),
-    //       ],
-    //     ]);
-    // }
 
     if ($options['nom']) {
       $builder

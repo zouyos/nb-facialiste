@@ -72,19 +72,13 @@ class ProfilController extends AbstractController
       $plainPassword = $form->get('plainPassword')->getData();
       $updatePassword = $form->get('updatePassword')->getData();
 
-      $access = true;
+      // dd($form->getData());
 
-      if (!$passwordHasher->isPasswordValid($user, $plainPassword)) {
-        $access = false;
-        $form->get('plainPassword')->addError(new FormError('Le mot de passe saisi est incorrect'));
-      } else {
-        if ($plainPassword === $updatePassword) {
-          $access = false;
-          $form->get('updatePassword')->addError(new FormError('Veuillez saisir un mot de passe différent de votre mot de passe actuel'));
-        }
+      if ($updatePassword === $plainPassword) {
+        $form->get('updatePassword')->addError(new FormError('Veuillez saisir un mot de passe différent de votre mot de passe actuel'));
       }
 
-      if ($access) {
+      if ($passwordHasher->isPasswordValid($user, $plainPassword)) {
         $user->setPassword(
           $passwordHasher->hashPassword($user, $updatePassword)
         );
@@ -107,6 +101,8 @@ class ProfilController extends AbstractController
         $this->addFlash('success', 'Votre mot de passe a bien été modifié. Un mail de confirmation vous a été envoyé à l\'adresse suivante : ' . $user->getEmail());
 
         return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
+      } else {
+        $form->get('plainPassword')->addError(new FormError('Le mot de passe saisi est incorrect'));
       }
     }
 
