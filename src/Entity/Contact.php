@@ -43,7 +43,7 @@ class Contact
   #[ORM\Column(length: 20, nullable: true)]
   #[Assert\Length(
     max: 20,
-    maxMessage: 'Le sujet ne peut pas excéder {{ limit }} caractères',
+    maxMessage: 'Le numéro ne peut pas excéder {{ limit }} caractères',
   )]
   private ?string $phone = null;
 

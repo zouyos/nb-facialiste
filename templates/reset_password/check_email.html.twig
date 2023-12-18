@@ -9,10 +9,9 @@
 {% endblock %}
 
 {% block main %}
-	<div class="container-fluid my-4">
+	<div class="container my-4">
 		<p>
-			Si un compte est attaché à l'adresse email
-														spécifiée, un mail contenant un lien pour générer un nouveau mot de passe a été envoyé. Ce lien expirera dans
+			Si un compte est attaché à l'adresse emailspécifiée, un mail contenant un lien pour générer un nouveau mot de passe a été envoyé. Ce lien expirera dans
 			{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
 		</p>
 		<p>Si vous n'avez pas reçu de lien, vérifiez dans le dossier spams ou

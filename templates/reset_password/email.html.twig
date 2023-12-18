@@ -1,4 +1,6 @@
-<h1>Bonjour {{ user.prenom }} !</h1>
+<h1>Bonjour
+	{{ user.prenom }}
+	!</h1>
 
 <p>Afin de générer un nouveau mot de passe, cliquez sur le lien ci-dessous :</p>
 
@@ -6,4 +8,3 @@
 
 <p>Ce lien expirera dans
 	{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
-<p>Bien cordialement</p>
