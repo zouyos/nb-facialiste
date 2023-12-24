@@ -103,7 +103,7 @@
 						{% endif %}
 					</div>
 					<div class="w-100 h-100 px-2">
-						<h3 class="h5 fw-bolder mt-4 mb-3 fs-sm fw-bold">{{ article.titre|length > 35 ? article.titre|slice(0, 35) ~ '...' : article.titre }}</h3>
+						<h3 class="h5 fw-bolder mt-4 mb-3 fs-sm fw-bold">{{ article.titre|length > 50 ? article.titre|slice(0, 50) ~ '...' : article.titre }}</h3>
 						<p class="text-justify my-2">{{ article.content|length > 125 ? article.content|slice(0, 125) ~ '...' : article.content }}</p>
 					</div>
 					<div class="card-footer pt-2 pb-4 fs-sm text-muted fw-bold">{{ article.createdAt|date('d/m/Y') }}</div>

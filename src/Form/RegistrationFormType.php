@@ -141,7 +141,7 @@ class RegistrationFormType extends AbstractType
           'required' => false,
           'label' => false,
           'choices' => [
-            'Admin' => 'ROLE_ADMIN'
+            'Compte admin' => 'ROLE_ADMIN'
           ],
           "multiple" => true,
           "expanded" => true

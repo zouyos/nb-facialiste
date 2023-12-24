@@ -28,6 +28,7 @@ class RegistrationController extends AbstractController
       'prenom' => true,
       'sexe' => true,
       'agreeTerms' => true,
+      // 'roles' => true
     ]);
     $form->handleRequest($request);
 
@@ -42,21 +43,21 @@ class RegistrationController extends AbstractController
       $user->setCreatedAt(new \DateTimeImmutable('now'));
       $entityManager->persist($user);
       $entityManager->flush();
-      
-      $email = (new TemplatedEmail())
-        ->from('no-reply@nb-facialiste.fr')
-        ->to($user->getEmail())
-        ->subject('Vos identifiants de connexion sur NB Facialiste')
-        ->htmlTemplate('email/register.html.twig')
-        ->context([
-          'user' => $user,
-          'plainPassword' => $form->get('plainPassword')->getData(),
-        ]);
 
-      $mailer->send($email);
+      // $email = (new TemplatedEmail())
+      //   ->from('no-reply@nb-facialiste.fr')
+      //   ->to($user->getEmail())
+      //   ->subject('Vos identifiants de connexion sur NB Facialiste')
+      //   ->htmlTemplate('email/register.html.twig')
+      //   ->context([
+      //     'user' => $user,
+      //     'plainPassword' => $form->get('plainPassword')->getData(),
+      //   ]);
+
+      // $mailer->send($email);
 
       $this->addFlash('success', 'Votre compte a bien été créé !
-      Un email de confirmation vous a été envoyé à l\'adresse : ' . $user->getEmail());
+      Un email de confirmation vous a été envoyé à l\'adresse suivante :' . ' ' . $user->getEmail());
 
       return $userAuthenticator->authenticateUser(
         $user,
