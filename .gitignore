@@ -1,9 +1,9 @@
 ###> symfony/framework-bundle ###
-/.env
-/.env.local
-/.env.local.php
-/.env.*.local
-/.en.test
+.env
+.env.local
+.env.local.php
+.env.*.local
+.en.test
 /config/secrets/prod/prod.decrypt.private.php
 # /public/bundles/
 /var/
@@ -25,3 +25,5 @@
 ###< liip/imagine-bundle ###
 public/uploads
 node_modules
+
+.DS_Store
